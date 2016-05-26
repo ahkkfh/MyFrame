@@ -1,0 +1,39 @@
+//用于管理公共依赖库
+ext {
+    retrofitVersion = '2.0.2'//网络请求的框架
+    leakCanaryVersion = '1.4-beta1'//内存溢出检测
+    supportLibraryVersion = '23.2.1'//支持库
+    recycleViewVersion = '23.1.1'//recyclerview的
+    greendaoVersion = '2.2.0'
+    dagger2Version = '2.0.1'
+
+    supportDependencies = [
+            greendao             : "org.greenrobot:greendao:$greendaoVersion",//数据库操作支付库
+            greendaoGenerator    : "org.greenrobot:greendao-generator:$greendaoVersion",//数据创建支持库
+            fresco               : "com.facebook.fresco:fresco:0.9.0+",//图片加载框架
+            glide                : "com.github.bumptech.glide:glide:3.6.1",//gilde图片加载
+            picasso              : "com.squareup.picasso:picasso:2.5.2",//图片加载
+            appCompat            : "com.android.support:appcompat-v7:$supportLibraryVersion",
+            cardView             : "com.android.support:cardview-v7:$supportLibraryVersion",
+            recyclerView         : "com.android.support:recyclerview-v7:$recycleViewVersion",
+            materialDesign       : "com.android.support:design:23.1.0",
+            rxbinding            : "com.jakewharton.rxbinding:rxbinding:0.4.0",//防止按钮重复提交
+            multidex             : "com.android.support:multidex:1.0.0",
+            retrofit2            : "com.squareup.retrofit2:retrofit:$retrofitVersion",//数据层网络请求操作
+            retrofitConverterGson: "com.squareup.retrofit2:converter-gson:$retrofitVersion",//网路请求Gson解析数据
+            rxadapter            : "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion",//
+            rxjava               : "io.reactivex:rxjava:1.0.+",//
+            rxandroid            : "io.reactivex:rxandroid:1.0.+",//
+            dagger               : "com.google.dagger:dagger:$dagger2Version",//依赖注入
+            daggerCompiler       : "com.google.dagger:dagger-compiler:$dagger2Version",
+            stethOkhttp3         : 'com.facebook.stetho:stetho-okhttp3:1.3.1',
+            annotation           : "org.glassfish:javax.annotation:10.0-b28",
+            constraint           : "com.android.support.constraint:constraint-layout:1.0.0-alpha1",
+            testEspresso         : "com.android.support.test.espresso:espresso-core:2.2.2",
+            testRunner           : "com.android.support.test:runner:0.5",
+            testAnnotations      : "com.android.support:support-annotations:23.2.1",
+            //引入第三方的ui引用
+            autolayout           : "com.zhy:autolayout:1.4.3"
+
+    ]
+}

@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'application'
+mainClassName = "cn.mark.dbcreate"
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+            srcDir 'src-gen'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile supportDependencies.greendaoGenerator //数据库创建依赖库
+}
+artifacts {
+    archives jar
+}
+
+repositories {
+    mavenCentral()
+}

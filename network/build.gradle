@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+apply plugin: "com.neenbedankt.android-apt"//设置dagger2引入
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile supportDependencies.appCompat
+    androidTestCompile supportDependencies.testEspresso
+    androidTestCompile supportDependencies.testRunner
+    androidTestCompile supportDependencies.testAnnotations
+
+    compile supportDependencies.greendao//数据库操作支持库
+    compile supportDependencies.greendaoGenerator //数据库创建支持库
+    compile supportDependencies.retrofit2 //网络请求的依赖库
+    compile supportDependencies.retrofitConverterGson//网路请求gson解析依赖库
+    compile supportDependencies.rxadapter
+    compile supportDependencies.rxjava
+    compile supportDependencies.rxandroid
+    compile supportDependencies.dagger
+    compile supportDependencies.daggerCompiler
+    provided(supportDependencies.annotation)
+    compile supportDependencies.stethOkhttp3
+    compile project(path: ':utils')//引入Utils模块
+}

@@ -1,3 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MyFrame</string>
+    <string name="user_login_title">登录</string>
+    <string name="user_login_account_hint">用户名</string>
+    <string name="user_login_password_hint">密码</string>
+    <string name="user_login_account_input_hint">请输入账号</string>
+    <string name="user_login_password_input_hint">请输入密码</string>
+    <string name="user_login_request_success_hint">登录成功</string>
+
 </resources>
