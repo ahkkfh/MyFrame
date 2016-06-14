@@ -2,7 +2,9 @@ package cn.mark.network.moduls.provider;
 
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
+
 import javax.inject.Singleton;
+
 import cn.mark.utils.Constant;
 import dagger.Module;
 import dagger.Provides;
@@ -23,7 +25,7 @@ public class RetrofitProvider {
     @Singleton
     Retrofit provideRetrofit() {//提供Retrofit对象
         OkHttpClient client = new OkHttpClient.Builder()
-                .addNetworkInterceptor(new StethoInterceptor())
+                .addNetworkInterceptor(new StethoInterceptor())//使用Stetho的抓包数据
                 .build();
         //
         return new Retrofit.Builder()

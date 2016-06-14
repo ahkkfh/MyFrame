@@ -1,5 +1,6 @@
 package cn.mark.frame;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -48,6 +49,13 @@ public class MainActivity extends AutoLayoutActivity implements UserController.L
                 userLogin();
             }
         });
+        RxView.clicks(binding.updateApk).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                startActivity(new Intent(MainActivity.this, UpdateApkActivity.class));
+            }
+        });
+
     }
 
     private void userLogin() {

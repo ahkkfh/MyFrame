@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Network</string>
+    <string name="lclib_net_fetch_data_failed">获取数据失败</string>
 </resources>

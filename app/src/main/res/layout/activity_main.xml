@@ -68,7 +68,7 @@
             android:background="@color/white"
             android:hint="@string/user_login_password_input_hint"
             android:inputType="textPassword"
-            android:text="qqqqqq"
+            android:text="123456"
             android:textColor="@color/color_2c3e50"
             android:textSize="@dimen/text_15" />
 
@@ -83,6 +83,20 @@
             android:background="@drawable/bg_ff7200"
             android:gravity="center"
             android:text="@string/user_login_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_17" />
+
+        <TextView
+            android:id="@+id/update_apk"
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            android:layout_below="@+id/user_login_button"
+            android:layout_marginLeft="25px"
+            android:layout_marginRight="25px"
+            android:layout_marginTop="50px"
+            android:background="@drawable/bg_ff7200"
+            android:gravity="center"
+            android:text="@string/update_apk"
             android:textColor="@color/white"
             android:textSize="@dimen/text_17" />
     </RelativeLayout>
