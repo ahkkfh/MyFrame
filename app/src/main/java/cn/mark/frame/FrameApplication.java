@@ -19,10 +19,11 @@ public class FrameApplication extends Application {
         applicationHelper = new ApplicationHelper(this);
         //Chrome plug-in initialization code debugging tools
         //Chome插件调试工具的初始化代码
-        Stetho.newInitializerBuilder(this)
-                .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
-                .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
-                .build();
+        Stetho.initializeWithDefaults(this);
+//        Stetho.newInitializerBuilder(this)
+//                .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
+//                .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
+//                .build();
     }
 
     public static ApplicationHelper getApplicationHelper() {
