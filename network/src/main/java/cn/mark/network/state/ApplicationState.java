@@ -1,13 +1,11 @@
 package cn.mark.network.state;
 
-import android.util.Log;
-
 import javax.inject.Inject;
-
 import cn.mark.network.db.User;
 import cn.mark.network.model.UserModel;
 import cn.mark.network.moduls.component.DaggerModelComponent;
 import cn.mark.network.moduls.component.ModelComponent;
+import cn.mark.utils.LogUtils;
 
 /**
  * Created by yaoping on 2016/5/26.
@@ -20,7 +18,7 @@ public class ApplicationState implements UserState {
     public ApplicationState() {
         ModelComponent component = DaggerModelComponent.create();
         component.inject(this);
-        Log.v("loginout", "ApplicationState " + this);
+        LogUtils.verbose("loginout", "ApplicationState " + this);
     }
 
     @Override

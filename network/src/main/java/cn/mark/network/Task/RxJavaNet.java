@@ -6,6 +6,7 @@ import android.widget.Toast;
 import cn.mark.network.ApplicationHelper;
 import cn.mark.network.R;
 import cn.mark.network.retrofit.bean.InfoBean;
+import cn.mark.utils.LogUtils;
 import cn.mark.utils.ToastUtil;
 import rx.Observable;
 import rx.Subscriber;
@@ -22,18 +23,18 @@ public abstract class RxJavaNet<T extends InfoBean> extends Subscriber<T> {
 
     @Override
     public void onCompleted() {
-        Log.i("retrofit", "onCompleted");
+        LogUtils.infoMsg("retrofit", "onCompleted");
     }
 
     @Override
     public void onError(Throwable e) {
         if (e instanceof RxError) {//判断错误是否为网络请求发送的错误
             ToastUtil.instance().show(((RxError) e).getError_messag());
-            Log.i("retrofit", "onError=" + ((RxError) e).getError_messag() + ",about infoBean");
+            LogUtils.infoMsg("retrofit", "onError=" + ((RxError) e).getError_messag() + ",about infoBean");
         } else {
             ToastUtil.instance().show(ApplicationHelper.instance()
                     .getString(R.string.lclib_net_fetch_data_failed));
-            Log.i("retrofit", "onError=" + e.getMessage());
+            LogUtils.infoMsg("retrofit", "onError=" + e.getMessage());
         }
     }
 

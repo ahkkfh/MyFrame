@@ -20,6 +20,7 @@ import cn.mark.utils.AppSystemUtil;
 import cn.mark.utils.Constant;
 import cn.mark.utils.DialogUtils;
 import cn.mark.utils.InstallUtils;
+import cn.mark.utils.LogUtils;
 import cn.mark.utils.ToastUtil;
 import rx.functions.Action1;
 
@@ -59,9 +60,11 @@ public class UpdateApkActivity extends AutoLayoutActivity implements UserControl
         });
     }
 
+    private static final String url = "http://pkg.fir.im/da8063801e0568da4210256a3b14a6f694e768bb.apk?attname=app-dev-release.apk_0.9.6.apk&e=1466059140&token=LOvmia8oXF4xnLh0IdH05XMYpH6ENHNpARlmPc-T:7iTQl_s8eMV_Xe9YjlC8RXfwV_4=";
+
     @Override
     public void FeachUpdateInfo(final UpdateApkBean bean) {
-        Log.i("lbxx", "更新信息" + bean.error_code + ",type==" + bean.getUpgrade_type());
+      /* LogUtils.infoMsg( "更新信息" + bean.error_code + ",type==" + bean.getUpgrade_type());
         if (Constant.requestSuccess != bean.error_code) {
             ToastUtil.instance().show(bean.error_msg);
             return;
@@ -70,20 +73,21 @@ public class UpdateApkActivity extends AutoLayoutActivity implements UserControl
             ToastUtil.instance().show(getString(R.string.update_apk_newest_version));
             return;
         }
-        if (Constant.numTwo.equals(bean.getUpgrade_type())) {
-            dialogUtils.showUpdateApkDialog(getString(R.string.update_apk_content_hint), "", getString(R.string.update_apk_button_hint), new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ToastUtil.instance().show(getString(R.string.update_apk_toasts, "1.0.1"));
-                    updateApkCallback.downloadApk(UpdateApkActivity.this, bean.getUrl());
-                }
-            });
-        }
+        if (Constant.numTwo.equals(bean.getUpgrade_type())) {*/
+        dialogUtils.showUpdateApkDialog(getString(R.string.update_apk_content_hint), "", getString(R.string.update_apk_button_hint), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastUtil.instance().show(getString(R.string.update_apk_toasts, "1.0.1"));
+//                    updateApkCallback.downloadApk(UpdateApkActivity.this, bean.getUrl());
+                updateApkCallback.downloadApk(UpdateApkActivity.this, url);
+            }
+        });
+//        }
     }
 
     @Override
     public void downloadApk(DownloadBean bean) {
-        Log.i("lbxx", "code==" + bean.error_code + "==msg=" + bean.error_msg);
+        LogUtils.infoMsg("code==" + bean.error_code + "==msg=" + bean.error_msg);
         if (bean.error_code != 0) {
             ToastUtil.instance().show(bean.error_msg);
             return;
