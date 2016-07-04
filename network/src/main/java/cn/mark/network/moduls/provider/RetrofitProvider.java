@@ -9,6 +9,7 @@ import cn.mark.utils.Constant;
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -24,14 +25,17 @@ public class RetrofitProvider {
     @Provides
     @Singleton
     Retrofit provideRetrofit() {//提供Retrofit对象
+//        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+//        interceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS);
         OkHttpClient client = new OkHttpClient.Builder()
                 .addNetworkInterceptor(new StethoInterceptor())//使用Stetho的抓包数据
+//                .addInterceptor(interceptor)
                 .build();
         //
         return new Retrofit.Builder()
                 .baseUrl(Constant.SERVER)
                 .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())//使用Gson解析数据
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
     }

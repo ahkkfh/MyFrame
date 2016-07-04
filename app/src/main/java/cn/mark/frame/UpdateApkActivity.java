@@ -12,6 +12,7 @@ import com.zhy.autolayout.AutoLayoutActivity;
 
 import java.util.concurrent.TimeUnit;
 
+import cn.mark.frame.base.BaseActivity;
 import cn.mark.frame.databinding.UpdateApkBinding;
 import cn.mark.network.controller.UserController;
 import cn.mark.network.retrofit.bean.userjson.DownloadBean;
@@ -27,7 +28,7 @@ import rx.functions.Action1;
 /**
  * Created by yaoping on 2016/6/7.
  */
-public class UpdateApkActivity extends AutoLayoutActivity implements UserController.UpdateApkUi {
+public class UpdateApkActivity extends BaseActivity implements UserController.UpdateApkUi {
     private UpdateApkBinding binding;
     private UserController userController;
     private UserController.UpdateApkCallback updateApkCallback;
@@ -54,8 +55,8 @@ public class UpdateApkActivity extends AutoLayoutActivity implements UserControl
         RxView.clicks(binding.button2).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
-//                updateApkCallback.feachUpdateInfo(verison_code);
-                updateApkCallback.feachUpdateInfo(AppSystemUtil.getVersionName());
+                updateApkCallback.feachUpdateInfo(verison_code);
+//                updateApkCallback.feachUpdateInfo(AppSystemUtil.getVersionName());
             }
         });
     }
@@ -64,8 +65,8 @@ public class UpdateApkActivity extends AutoLayoutActivity implements UserControl
 
     @Override
     public void FeachUpdateInfo(final UpdateApkBean bean) {
-      /* LogUtils.infoMsg( "更新信息" + bean.error_code + ",type==" + bean.getUpgrade_type());
-        if (Constant.requestSuccess != bean.error_code) {
+        LogUtils.infoMsg("更新信息" + bean.error_code + ",type==" + bean.getUpgrade_type());
+        /*   if (Constant.requestSuccess != bean.error_code) {
             ToastUtil.instance().show(bean.error_msg);
             return;
         }
@@ -88,7 +89,7 @@ public class UpdateApkActivity extends AutoLayoutActivity implements UserControl
     @Override
     public void downloadApk(DownloadBean bean) {
         LogUtils.infoMsg("code==" + bean.error_code + "==msg=" + bean.error_msg);
-        if (bean.error_code != 0) {
+        if (bean.error_code != Constant.requestOk) {
             ToastUtil.instance().show(bean.error_msg);
             return;
         }

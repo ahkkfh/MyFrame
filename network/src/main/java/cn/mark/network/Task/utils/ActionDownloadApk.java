@@ -95,7 +95,7 @@ public class ActionDownloadApk extends PubParamNetExecuter<DownloadBean> {
                                                 progressBuilder.setProgress(maxProgress, maxProgress, false);
                                                 progressBuilder.setContentText(downloadSuccessText);
                                                 progressManager.notify(2, progressBuilder.build());
-                                                bean.error_code = 0;
+                                                bean.error_code = Constant.requestOk;
                                                 bean.error_msg = "ok";
                                                 bean.app_url = "file://" + apkFile.toString();
                                                 clearNotify(2);
@@ -107,7 +107,7 @@ public class ActionDownloadApk extends PubParamNetExecuter<DownloadBean> {
                                         outputStream.close();
                                     } catch (Exception e) {
                                         e.printStackTrace();
-                                        bean.error_code = -1;
+                                        bean.error_code = "-1";
                                         bean.error_msg = e.getMessage();
                                         bean.app_url = "";
                                     }
@@ -116,7 +116,7 @@ public class ActionDownloadApk extends PubParamNetExecuter<DownloadBean> {
 
                             @Override
                             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                                bean.error_code = -1;
+                                bean.error_code = "-1";
                                 bean.error_msg = t.getMessage();
                                 bean.app_url = "";
                             }

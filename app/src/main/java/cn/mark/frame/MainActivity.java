@@ -11,13 +11,14 @@ import com.zhy.autolayout.AutoLayoutActivity;
 
 import java.util.concurrent.TimeUnit;
 
+import cn.mark.frame.base.BaseActivity;
 import cn.mark.frame.databinding.ActivityMainBinding;
 import cn.mark.network.controller.UserController;
 import cn.mark.network.retrofit.bean.userjson.UserBean;
 import cn.mark.utils.Constant;
 import rx.functions.Action1;
 
-public class MainActivity extends AutoLayoutActivity implements UserController.LoginUi {
+public class MainActivity extends BaseActivity implements UserController.LoginUi {
     private ActivityMainBinding binding;
     private UserController userController;
     private UserController.UserLoginCallback userLoginCallback;
@@ -26,7 +27,13 @@ public class MainActivity extends AutoLayoutActivity implements UserController.L
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        initView();
         initClick();
+    }
+
+    private void initView() {
+        back();
+        setHeadTitle(R.string.user_login_title);
     }
 
     @Override
@@ -55,6 +62,12 @@ public class MainActivity extends AutoLayoutActivity implements UserController.L
                 startActivity(new Intent(MainActivity.this, UpdateApkActivity.class));
             }
         });
+        RxView.clicks(binding.userRegiestButton).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                startActivity(new Intent(MainActivity.this, RegiestActivity.class));
+            }
+        });
 
     }
 
@@ -74,7 +87,7 @@ public class MainActivity extends AutoLayoutActivity implements UserController.L
 
     @Override
     public void userLoginBack(UserBean userBean) {
-        if (userBean.error_code == Constant.requestSuccess) {
+        if (userBean.error_code == Constant.requestOk) {
             Toast.makeText(this, getString(R.string.user_login_request_success_hint), Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, userBean.error_msg, Toast.LENGTH_SHORT).show();

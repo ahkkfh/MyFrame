@@ -17,6 +17,7 @@ public class Constant {
 
     public static final int requestSuccess = 0;
     public static final String numTwo = "2";
+    public static final String requestOk = "0000";
 
     public static final String saveApkPath = Environment.getExternalStorageDirectory() + File.separator + "download";
 

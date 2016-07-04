@@ -6,37 +6,30 @@
     <RelativeLayout
         android:id="@+id/activity_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/color_f0f0f0">
 
-
-        <TextView
-            android:id="@+id/user_login_title"
-            android:layout_width="match_parent"
-            android:layout_height="110px"
-            android:background="@color/white"
-            android:gravity="center"
-            android:text="@string/user_login_title"
-            android:textColor="@color/color_2c3e50"
-            android:textSize="@dimen/text_15" />
+        <include layout="@layout/base_head" />
 
         <TextView
             android:id="@+id/user_login_accout"
             android:layout_width="wrap_content"
             android:layout_height="98px"
-            android:layout_below="@+id/user_login_title"
+            android:layout_below="@+id/base_head_layout"
             android:layout_marginTop="20px"
             android:background="@color/white"
             android:gravity="center"
             android:paddingLeft="25px"
             android:paddingRight="25px"
             android:text="@string/user_login_account_hint"
+            android:textColor="@color/color_2c3e50"
             android:textSize="@dimen/text_15" />
 
         <EditText
             android:id="@+id/user_login_input_account"
             android:layout_width="match_parent"
             android:layout_height="98px"
-            android:layout_below="@+id/user_login_title"
+            android:layout_below="@+id/base_head_layout"
             android:layout_marginTop="20px"
             android:layout_toRightOf="@+id/user_login_accout"
             android:background="@color/white"
@@ -56,6 +49,7 @@
             android:paddingLeft="25px"
             android:paddingRight="25px"
             android:text="@string/user_login_password_hint"
+            android:textColor="@color/color_2c3e50"
             android:textSize="@dimen/text_15" />
 
         <EditText
@@ -87,10 +81,24 @@
             android:textSize="@dimen/text_17" />
 
         <TextView
-            android:id="@+id/update_apk"
+            android:id="@+id/user_regiest_button"
             android:layout_width="match_parent"
             android:layout_height="80px"
             android:layout_below="@+id/user_login_button"
+            android:layout_marginLeft="25px"
+            android:layout_marginRight="25px"
+            android:layout_marginTop="50px"
+            android:background="@drawable/bg_ff7200"
+            android:gravity="center"
+            android:text="@string/user_registered_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_17" />
+
+        <TextView
+            android:id="@+id/update_apk"
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            android:layout_below="@+id/user_regiest_button"
             android:layout_marginLeft="25px"
             android:layout_marginRight="25px"
             android:layout_marginTop="50px"

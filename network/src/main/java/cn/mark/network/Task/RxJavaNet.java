@@ -6,6 +6,7 @@ import android.widget.Toast;
 import cn.mark.network.ApplicationHelper;
 import cn.mark.network.R;
 import cn.mark.network.retrofit.bean.InfoBean;
+import cn.mark.utils.Constant;
 import cn.mark.utils.LogUtils;
 import cn.mark.utils.ToastUtil;
 import rx.Observable;
@@ -53,7 +54,7 @@ public abstract class RxJavaNet<T extends InfoBean> extends Subscriber<T> {
                 .flatMap(new Func1<T, Observable<T>>() {
                     @Override
                     public Observable<T> call(T t) {
-                        if (0 != t.error_code) //判断返回的结果是否请求成功
+                        if (Constant.requestOk != t.error_code) //判断返回的结果是否请求成功
                             return Observable.error(new RxError(t));
 
                         onNextBackgroundSuccess(t);

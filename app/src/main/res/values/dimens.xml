@@ -3,6 +3,41 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <!--sp-->
+    <dimen name="text_11">11sp</dimen>
+    <dimen name="text_12">12sp</dimen>
+    <dimen name="text_13">13sp</dimen>
+    <dimen name="text_14">14sp</dimen>
+    <dimen name="text_15">15sp</dimen>
+    <dimen name="text_16">16sp</dimen>
+    <dimen name="text_17">17sp</dimen>
+    <dimen name="text_18">18sp</dimen>
+    <dimen name="text_19">19sp</dimen>
+    <dimen name="text_20">20sp</dimen>
+
+
+    <!--px  -->
+    <dimen name="px_10">10px</dimen>
+    <dimen name="px_11">11px</dimen>
+    <dimen name="px_12">12px</dimen>
+    <dimen name="px_13">13px</dimen>
+    <dimen name="px_14">14px</dimen>
+    <dimen name="px_15">15px</dimen>
+    <dimen name="px_16">16px</dimen>
+    <dimen name="px_17">17px</dimen>
+    <dimen name="px_18">18px</dimen>
+    <dimen name="px_19">19px</dimen>
+    <dimen name="px_20">20px</dimen>
+    <dimen name="px_21">21px</dimen>
+    <dimen name="px_22">22px</dimen>
+    <dimen name="px_23">23px</dimen>
+    <dimen name="px_24">24px</dimen>
+    <dimen name="px_25">25px</dimen>
+    <dimen name="px_26">26px</dimen>
+    <dimen name="px_27">27px</dimen>
+    <dimen name="px_28">28px</dimen>
+    <dimen name="px_29">29px</dimen>
+    <dimen name="px_30">30px</dimen>
 
 
 </resources>

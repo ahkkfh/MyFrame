@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">MyFrame</string>
     <string name="user_login_title">登录</string>
+    <string name="user_registered_title">注册</string>
     <string name="update_apk">更新apk</string>
     <string name="user_login_account_hint">用户名</string>
     <string name="user_login_password_hint">密码</string>
@@ -17,4 +18,10 @@
     <string name="update_apk_dialog_hint">app已有新版本，去设置中心更新</string>
     <string name="update_apk_newest_version">已是最新版本</string>
 
+
+    <!--user regiest-->
+    <string name="regiest_name_hint">账户名</string>
+    <string name="regiest_code_hint">验证码</string>
+    <string name="regiest_password_hint">密码</string>
+    <string name="regiest_input_hint">手机号/邮箱</string>
 </resources>
