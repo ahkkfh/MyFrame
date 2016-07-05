@@ -1,0 +1,1 @@
+这是一个集成DataBinding、retrofit2、RxJava、GreenDao、Dagger2的MVP框架。
