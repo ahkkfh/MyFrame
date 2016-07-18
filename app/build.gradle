@@ -1,28 +1,36 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 23 //编译sdk版本
+    buildToolsVersion "23.0.3" //build tools 版本
     defaultConfig {
-        applicationId "cn.mark.frame"
-        minSdkVersion 15
-        targetSdkVersion 23
-        versionCode 12
-        versionName "0.9.6"
+        applicationId "cn.mark.frame" //应用包名
+        minSdkVersion 15 //最低支持版本
+        targetSdkVersion 23 //目标sdk版本
+        versionCode 1  //版本号
+        versionName "1.0.0"//版本名
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug{
+            minifyEnabled false //是否混淆代码
+            zipAlignEnabled false //是否zip优化
+            shrinkResources false //删除无用的资源
+        }
         release {
-            minifyEnabled false
+            minifyEnabled false //是否混淆代码
+            zipAlignEnabled true //是否zip优化
+            shrinkResources true //删除无用的资源
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
     dataBinding {//dataBinding
-        enabled = true
+        enabled true
     }
 }
 
 dependencies {
+    //编译lib包下所有jar包
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile supportDependencies.appCompat
@@ -30,11 +38,12 @@ dependencies {
     compile supportDependencies.autolayout
     compile supportDependencies.rxbinding
     compile supportDependencies.stetho
+    compile supportDependencies.recyclerView
 
     androidTestCompile supportDependencies.testEspresso
     androidTestCompile supportDependencies.testRunner
     androidTestCompile supportDependencies.testAnnotations
-
+    //编译MyFrame下的所有module
     compile project(path: ":utils")
     compile project(path: ":network")
 }

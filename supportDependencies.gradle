@@ -7,6 +7,7 @@ ext {
     greendaoVersion = '2.2.0'
     dagger2Version = '2.0.1'
     loggerVersion = '1.13'
+    logansquareVersion = '1.1.0'
 
     supportDependencies = [
             greendao             : "org.greenrobot:greendao:$greendaoVersion",//数据库操作支付库
@@ -40,8 +41,9 @@ ext {
             stethOkhttp3         : 'com.facebook.stetho:stetho-okhttp3:1.3.1',
 
             logger               : "com.orhanobut:logger:$loggerVersion",//格式化log日志依赖库
+            logansquare          : "com.bluelinelabs:logansquare:$logansquareVersion",//解析json数据
+            okhttpLog            : 'com.squareup.okhttp3:logging-interceptor:3.0.1',
             //引入第三方的ui引用
-            autolayout           : "com.zhy:autolayout:1.4.3"
-
+            autolayout           : "com.zhy:autolayout:1.4.3",
     ]
 }

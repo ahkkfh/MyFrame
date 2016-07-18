@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Utils</string>
+    <string name="empty_view_hint_text">暂时没有数据</string>
 </resources>
