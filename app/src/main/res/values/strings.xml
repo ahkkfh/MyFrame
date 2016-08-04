@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MyFrame</string>
+    <string name="app_name">我的框架</string>
     <string name="user_login_title">登录</string>
     <string name="user_registered_title">注册</string>
     <string name="update_apk">更新apk</string>
@@ -10,7 +10,8 @@
     <string name="user_login_password_input_hint">请输入密码</string>
     <string name="user_login_request_success_hint">登录成功</string>
     <string name="update_hint_text1">对话框更新</string>
-    <string name="update_hint_text2">通知栏更新</string>
+    <string name="update_hint_text2">app更新</string>
+    <string name="update_apk_title">更新应用</string>
 
     <string name="update_apk_content_hint">当前版本不再维护，请下载最新版</string>
     <string name="update_apk_button_hint">立即更新</string>

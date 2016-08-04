@@ -29,13 +29,14 @@ public abstract class RxJavaNet<T extends InfoBean> extends Subscriber<T> {
 
     @Override
     public void onError(Throwable e) {
+        Log.i("lbxx","e=="+e.getMessage());
         if (e instanceof RxError) {//判断错误是否为网络请求发送的错误
             ToastUtil.instance().show(((RxError) e).getError_messag());
-            LogUtils.infoMsg("retrofit", "onError=" + ((RxError) e).getError_messag() + ",about infoBean");
+            LogUtils.infoMsg("onError=" + ((RxError) e).getError_messag() + ",about infoBean");
         } else {
             ToastUtil.instance().show(ApplicationHelper.instance()
                     .getString(R.string.lclib_net_fetch_data_failed));
-            LogUtils.infoMsg("retrofit", "onError=" + e.getMessage());
+            LogUtils.infoMsg( "onError=" + e.getMessage());
         }
     }
 
@@ -54,7 +55,7 @@ public abstract class RxJavaNet<T extends InfoBean> extends Subscriber<T> {
                 .flatMap(new Func1<T, Observable<T>>() {
                     @Override
                     public Observable<T> call(T t) {
-                        if (Constant.requestOk != t.error_code) //判断返回的结果是否请求成功
+                        if (Constant.requestSuccess != t.error_code) //判断返回的结果是否请求成功
                             return Observable.error(new RxError(t));
 
                         onNextBackgroundSuccess(t);

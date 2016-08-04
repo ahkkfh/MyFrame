@@ -1,8 +1,9 @@
-package cn.mark.frame;
+package cn.mark.frame.system;
 
 import android.app.Application;
 
 import com.facebook.stetho.Stetho;
+import com.liulishuo.filedownloader.FileDownloader;
 
 import cn.mark.network.ApplicationHelper;
 
@@ -20,10 +21,7 @@ public class FrameApplication extends Application {
         //Chrome plug-in initialization code debugging tools
         //Chome插件调试工具的初始化代码
         Stetho.initializeWithDefaults(this);
-//        Stetho.newInitializerBuilder(this)
-//                .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
-//                .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
-//                .build();
+        FileDownloader.init(getApplicationContext());
     }
 
     public static ApplicationHelper getApplicationHelper() {

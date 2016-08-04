@@ -45,5 +45,6 @@ ext {
             okhttpLog            : 'com.squareup.okhttp3:logging-interceptor:3.0.1',
             //引入第三方的ui引用
             autolayout           : "com.zhy:autolayout:1.4.3",
+            filedownloader       : "com.liulishuo.filedownloader:library:0.3.3",
     ]
 }

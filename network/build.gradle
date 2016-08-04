@@ -43,6 +43,7 @@ dependencies {
     provided(supportDependencies.annotation)
     compile supportDependencies.stethOkhttp3
     compile supportDependencies.okhttpLog
+    compile supportDependencies.filedownloader//文件下载
     apt 'com.bluelinelabs:logansquare-compiler:1.1.0'
     compile supportDependencies.logansquare//更快的json解析
     compile project(path: ':utils')//引入Utils模块

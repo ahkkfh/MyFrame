@@ -5,6 +5,6 @@ package cn.mark.network.retrofit.bean;
  */
 
 public class InfoBean {
-    public String error_code;
+    public int error_code;
     public String error_msg;
 }

@@ -1,20 +1,21 @@
-package cn.mark.frame;
+package cn.mark.frame.ui;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.jakewharton.rxbinding.view.RxView;
-import com.zhy.autolayout.AutoLayoutActivity;
 
 import java.util.concurrent.TimeUnit;
 
+import cn.mark.frame.R;
 import cn.mark.frame.base.BaseActivity;
 import cn.mark.frame.databinding.ActivityMainBinding;
+import cn.mark.frame.system.FrameApplication;
 import cn.mark.network.controller.UserController;
 import cn.mark.network.retrofit.bean.userjson.UserBean;
+import cn.mark.utils.CircularAnimUtil;
 import cn.mark.utils.Constant;
 import rx.functions.Action1;
 
@@ -54,6 +55,7 @@ public class MainActivity extends BaseActivity implements UserController.LoginUi
             @Override
             public void call(Void aVoid) {
                 userLogin();
+                CircularAnimUtil.hide(binding.userLoginButton);//动画效果隐藏按钮
             }
         });
         RxView.clicks(binding.updateApk).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
@@ -87,8 +89,9 @@ public class MainActivity extends BaseActivity implements UserController.LoginUi
 
     @Override
     public void userLoginBack(UserBean userBean) {
-        if (userBean.error_code == Constant.requestOk) {
+        if (userBean.error_code == Constant.requestSuccess) {
             Toast.makeText(this, getString(R.string.user_login_request_success_hint), Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, UpdateApkActivity.class));
         } else {
             Toast.makeText(this, userBean.error_msg, Toast.LENGTH_SHORT).show();
         }

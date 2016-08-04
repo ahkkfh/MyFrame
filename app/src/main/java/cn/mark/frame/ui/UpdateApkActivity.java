@@ -1,4 +1,4 @@
-package cn.mark.frame;
+package cn.mark.frame.ui;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -8,16 +8,16 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.jakewharton.rxbinding.view.RxView;
-import com.zhy.autolayout.AutoLayoutActivity;
 
 import java.util.concurrent.TimeUnit;
 
+import cn.mark.frame.R;
 import cn.mark.frame.base.BaseActivity;
 import cn.mark.frame.databinding.UpdateApkBinding;
+import cn.mark.frame.system.FrameApplication;
 import cn.mark.network.controller.UserController;
 import cn.mark.network.retrofit.bean.userjson.DownloadBean;
 import cn.mark.network.retrofit.bean.userjson.UpdateApkBean;
-import cn.mark.utils.AppSystemUtil;
 import cn.mark.utils.Constant;
 import cn.mark.utils.DialogUtils;
 import cn.mark.utils.InstallUtils;
@@ -33,8 +33,6 @@ public class UpdateApkActivity extends BaseActivity implements UserController.Up
     private UserController userController;
     private UserController.UpdateApkCallback updateApkCallback;
     private static final String verison_code = "3.3.3";
-    //    private static final  String verison_code="2.2.2";
-//    private static final  String verison_code="1.1.1";
     private DialogUtils dialogUtils;
 
     @Override
@@ -45,52 +43,46 @@ public class UpdateApkActivity extends BaseActivity implements UserController.Up
     }
 
     private void initClick() {
+        back();
+        setHeadTitle(getString(R.string.update_apk_title));
+        dialogUtils = new DialogUtils(this);
         userController = FrameApplication.getApplicationHelper().getMainController().getUserController();
-        RxView.clicks(binding.button1).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
-            @Override
-            public void call(Void aVoid) {
-                Toast.makeText(UpdateApkActivity.this, "button1", Toast.LENGTH_SHORT).show();
-            }
-        });
         RxView.clicks(binding.button2).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
                 updateApkCallback.feachUpdateInfo(verison_code);
-//                updateApkCallback.feachUpdateInfo(AppSystemUtil.getVersionName());
             }
         });
     }
 
-    private static final String url = "http://pkg.fir.im/da8063801e0568da4210256a3b14a6f694e768bb.apk?attname=app-dev-release.apk_0.9.6.apk&e=1466059140&token=LOvmia8oXF4xnLh0IdH05XMYpH6ENHNpARlmPc-T:7iTQl_s8eMV_Xe9YjlC8RXfwV_4=";
+    private static final String url = "http://pkg3.fir.im/709099240dae681c09ee5f83f3160a234f53f1d7.apk?filename=app-dev-release.apk_1.1.0.6.apk";
 
+    //查询更新信息
     @Override
-    public void FeachUpdateInfo(final UpdateApkBean bean) {
-        LogUtils.infoMsg("更新信息" + bean.error_code + ",type==" + bean.getUpgrade_type());
-        /*   if (Constant.requestSuccess != bean.error_code) {
+    public void FeachUpdateInfo(UpdateApkBean bean) {
+        if (Constant.requestSuccess != bean.error_code) {
             ToastUtil.instance().show(bean.error_msg);
             return;
         }
-        if (Constant.numTen.equals(bean.getUpgrade_type())) {
-            ToastUtil.instance().show(getString(R.string.update_apk_newest_version));
-            return;
-        }
-        if (Constant.numTwo.equals(bean.getUpgrade_type())) {*/
-        dialogUtils.showUpdateApkDialog(getString(R.string.update_apk_content_hint), "", getString(R.string.update_apk_button_hint), new View.OnClickListener() {
+      /*  dialogUtils.showUpdateApkDialog(getString(R.string.update_apk_content_hint), "", getString(R.string.update_apk_button_hint), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtil.instance().show(getString(R.string.update_apk_toasts, "1.0.1"));
-//                    updateApkCallback.downloadApk(UpdateApkActivity.this, bean.getUrl());
-                updateApkCallback.downloadApk(UpdateApkActivity.this, url);
-            }
-        });
-//        }
+                ToastUtil.instance().show("正在更新...");
+                dialogUtils.shutdownDialog();*/
+        updateApkCallback.downloadApk(UpdateApkActivity.this, "/709099240dae681c09ee5f83f3160a234f53f1d7.apk?filename=app-dev-release.apk_1.1.0.6.apk");
+      /*      }
+        });*/
     }
 
     @Override
     public void downloadApk(DownloadBean bean) {
-        LogUtils.infoMsg("code==" + bean.error_code + "==msg=" + bean.error_msg);
-        if (bean.error_code != Constant.requestOk) {
+        dialogUtils.shutdownDialog();//关闭dialog
+        if (bean.error_code != Constant.requestSuccess) {
             ToastUtil.instance().show(bean.error_msg);
+            return;
+        }
+        if (Constant.stringIsAir.equals(bean.app_url)) {
+            ToastUtil.instance().show("app地址为空");
             return;
         }
         InstallUtils.installApk(this, bean.app_url);
