@@ -56,7 +56,7 @@ public class UserController extends BaseUIController<UserController.UserUi, User
 
                 @Override
                 public void downloadApk(Context context, String downloadUrl) {
-                    new ActionDownloadApk(context, downloadUrl).execute();
+                    new ActionDownloadApkTask(context, downloadUrl).execute();
                 }
             };
         }
@@ -72,6 +72,23 @@ public class UserController extends BaseUIController<UserController.UserUi, User
 
     public interface UserLoginCallback extends UserUiCallback {
         void userLogin(String account, String password);
+    }
+
+    public class ActionDownloadApkTask extends ActionDownloadApk {
+        public ActionDownloadApkTask(Context context, String fileUrl) {
+            super(context, fileUrl);
+        }
+
+        @Override
+        public void onNext(DownloadBean data) {
+            super.onNext(data);
+            for (Ui ui : getUis()) {
+                if (ui instanceof UpdateApkUi) {
+                    ((UpdateApkUi) ui).downloadApk(data);
+                    break;
+                }
+            }
+        }
     }
 
     public class UpdateApkTask extends FetchUpdateInfo {

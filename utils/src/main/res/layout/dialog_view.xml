@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="520px"
+    android:layout_height="240px"
+    android:background="@drawable/bg_fff"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dialog_content"
+        android:layout_width="match_parent"
+        android:layout_height="138px"
+        android:gravity="center"
+        android:text="确定要删除这个商品吗?"
+        android:textColor="@color/color_2c3e50"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_e1e9f0" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="105px"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dialog_cancel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/color_ff7200"
+            android:textSize="15sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_e1e9f0" />
+
+        <TextView
+            android:id="@+id/dialog_confirm"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/color_ff7200"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+</LinearLayout>

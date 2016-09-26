@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: "com.neenbedankt.android-apt"//设置dagger2引入
-apply plugin: 'com.neenbedankt.android-apt'
 
 
 android {

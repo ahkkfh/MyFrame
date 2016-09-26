@@ -54,7 +54,7 @@ public abstract class RxJavaNet<T extends InfoBean> extends Subscriber<T> {
                 .flatMap(new Func1<T, Observable<T>>() {
                     @Override
                     public Observable<T> call(T t) {
-                        if (Constant.requestOk != t.error_code) //判断返回的结果是否请求成功
+                        if (Constant.requestSuccess != t.error_code) //判断返回的结果是否请求成功
                             return Observable.error(new RxError(t));
 
                         onNextBackgroundSuccess(t);

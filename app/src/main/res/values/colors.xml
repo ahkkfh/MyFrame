@@ -7,6 +7,7 @@
     <color name="color_bg">#f2f2f2</color>
     <color name="black">#000000</color>
     <color name="transparent">#00000000</color>
+    <color name="transparent_50">#7F000000</color>
     <color name="white">#ffffff</color>
     <color name="color_e1e9f0">#e1e9f0</color>
     <color name="color_f06c02">#f06c02</color>

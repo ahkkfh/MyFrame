@@ -1,8 +1,21 @@
 apply plugin: 'com.android.application'
-
 android {
     compileSdkVersion 23 //编译sdk版本
     buildToolsVersion "23.0.3" //build tools 版本
+
+    //设置签名文件信息
+    signingConfigs {
+        debug {//debug版本签名信息
+
+        }
+        release {//
+            storeFile file("D:\\appkey\\lc_android.keystore")//apk签名文件的路径
+            storePassword "android"//签名文件密码
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
+
     defaultConfig {
         applicationId "cn.mark.frame" //应用包名
         minSdkVersion 15 //最低支持版本
@@ -12,7 +25,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        debug{
+        debug {
             minifyEnabled false //是否混淆代码
             zipAlignEnabled false //是否zip优化
             shrinkResources false //删除无用的资源
@@ -39,6 +52,9 @@ dependencies {
     compile supportDependencies.rxbinding
     compile supportDependencies.stetho
     compile supportDependencies.recyclerView
+    compile supportDependencies.logger
+    compile supportDependencies.androidanimations
+    compile supportDependencies.nineoldandroids
 
     androidTestCompile supportDependencies.testEspresso
     androidTestCompile supportDependencies.testRunner

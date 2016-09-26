@@ -1,51 +1,52 @@
-package cn.mark.frame;
+package cn.mark.frame.ui;
 
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.jakewharton.rxbinding.view.RxView;
-import com.zhy.autolayout.AutoLayoutActivity;
 
 import java.util.concurrent.TimeUnit;
 
+import cn.mark.frame.R;
 import cn.mark.frame.base.BaseActivity;
 import cn.mark.frame.databinding.ActivityMainBinding;
+import cn.mark.frame.helper.LoadingHelper;
+import cn.mark.frame.system.FrameApplication;
 import cn.mark.network.controller.UserController;
 import cn.mark.network.retrofit.bean.userjson.UserBean;
 import cn.mark.utils.Constant;
+import cn.mark.utils.ToastUtil;
 import rx.functions.Action1;
 
 public class MainActivity extends BaseActivity implements UserController.LoginUi {
     private ActivityMainBinding binding;
     private UserController userController;
     private UserController.UserLoginCallback userLoginCallback;
+    private LoadingHelper loadingHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        initAtionBar();
         initView();
         initClick();
     }
 
+    private void initAtionBar() {
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, binding.mainDrawer, R.string.bar_open, R.string.bar_close);
+        actionBarDrawerToggle.syncState();
+        binding.mainDrawer.setDrawerListener(actionBarDrawerToggle);
+    }
+
     private void initView() {
-        back();
-        setHeadTitle(R.string.user_login_title);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        userController.attachUi(this);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        userController.detachUi(this);
+        loadingHelper = new LoadingHelper(this, binding.activityMain);
     }
 
     private void initClick() {
@@ -56,19 +57,18 @@ public class MainActivity extends BaseActivity implements UserController.LoginUi
                 userLogin();
             }
         });
-        RxView.clicks(binding.updateApk).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
+        RxView.clicks(binding.lefyLayoutName).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
-                startActivity(new Intent(MainActivity.this, UpdateApkActivity.class));
+                ToastUtil.instance().show("点击name");
             }
         });
-        RxView.clicks(binding.userRegiestButton).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
+        RxView.clicks(binding.lefyLayoutFlag).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
-                startActivity(new Intent(MainActivity.this, RegiestActivity.class));
+                ToastUtil.instance().show("点击标签");
             }
         });
-
     }
 
     private void userLogin() {
@@ -83,15 +83,42 @@ public class MainActivity extends BaseActivity implements UserController.LoginUi
             return;
         }
         userLoginCallback.userLogin(account, password);
+        loadingHelper.show();
     }
 
     @Override
     public void userLoginBack(UserBean userBean) {
-        if (userBean.error_code == Constant.requestOk) {
+        loadingHelper.hide();
+        if (userBean.error_code == Constant.requestSuccess) {
             Toast.makeText(this, getString(R.string.user_login_request_success_hint), Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, userBean.error_msg, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            if (binding.mainDrawer.isDrawerOpen(GravityCompat.START)) {
+                binding.mainDrawer.closeDrawers();
+            } else {
+                binding.mainDrawer.openDrawer(GravityCompat.START);
+            }
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        userController.attachUi(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        userController.detachUi(this);
     }
 
     @Override

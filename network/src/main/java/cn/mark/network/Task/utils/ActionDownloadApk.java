@@ -11,6 +11,7 @@ import java.io.InputStream;
 
 import cn.mark.network.R;
 import cn.mark.network.Task.PubParamNetExecuter;
+import cn.mark.network.Task.RxJavaNet;
 import cn.mark.network.retrofit.RetrofitServer;
 import cn.mark.network.retrofit.bean.userjson.DownloadBean;
 import cn.mark.utils.Constant;
@@ -27,7 +28,7 @@ import rx.schedulers.Schedulers;
  * Created by yaoping on 2016/6/13.
  * 自定下载程序，重写execute方法，下载apk文件
  */
-public class ActionDownloadApk extends PubParamNetExecuter<DownloadBean> {
+public class ActionDownloadApk extends RxJavaNet<DownloadBean> {
     private String apkUrl;
     private NotificationManager progressManager;
     private NotificationCompat.Builder progressBuilder;
@@ -38,7 +39,6 @@ public class ActionDownloadApk extends PubParamNetExecuter<DownloadBean> {
     private static final String downloadSuccessText = "懒猫旅行下载完成";
     private int progress;
     private static final int maxProgress = 100;
-
 
     public ActionDownloadApk(Context context, String fileUrl) {
         apkUrl = fileUrl;
@@ -95,7 +95,7 @@ public class ActionDownloadApk extends PubParamNetExecuter<DownloadBean> {
                                                 progressBuilder.setProgress(maxProgress, maxProgress, false);
                                                 progressBuilder.setContentText(downloadSuccessText);
                                                 progressManager.notify(2, progressBuilder.build());
-                                                bean.error_code = Constant.requestOk;
+                                                bean.error_code = Constant.requestSuccess;
                                                 bean.error_msg = "ok";
                                                 bean.app_url = "file://" + apkFile.toString();
                                                 clearNotify(2);
@@ -107,7 +107,7 @@ public class ActionDownloadApk extends PubParamNetExecuter<DownloadBean> {
                                         outputStream.close();
                                     } catch (Exception e) {
                                         e.printStackTrace();
-                                        bean.error_code = "-1";
+                                        bean.error_code = -1;
                                         bean.error_msg = e.getMessage();
                                         bean.app_url = "";
                                     }
@@ -116,7 +116,7 @@ public class ActionDownloadApk extends PubParamNetExecuter<DownloadBean> {
 
                             @Override
                             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                                bean.error_code = "-1";
+                                bean.error_code = -1;
                                 bean.error_msg = t.getMessage();
                                 bean.app_url = "";
                             }

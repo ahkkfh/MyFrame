@@ -7,7 +7,7 @@ import cn.mark.network.retrofit.bean.InfoBean;
  */
 
 public class RxError extends Throwable {
-    private String error_code;
+    private int error_code;
     private String error_messag;
 
     public RxError(InfoBean infoBean) {
@@ -15,11 +15,11 @@ public class RxError extends Throwable {
         error_messag = infoBean.error_msg;
     }
 
-    public String getError_code() {
+    public int getError_code() {
         return error_code;
     }
 
-    public void setError_code(String error_code) {
+    public void setError_code(int error_code) {
         this.error_code = error_code;
     }
 

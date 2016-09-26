@@ -24,4 +24,14 @@
     <string name="regiest_code_hint">验证码</string>
     <string name="regiest_password_hint">密码</string>
     <string name="regiest_input_hint">手机号/邮箱</string>
+
+
+    <string name="accessibility_description">auto reply for wei chat</string>
+    <string name="my_accessibility_description">test Accessibility services</string>
+    <!--left layout-->
+
+    <string name="left_name">姓名:杨小可</string>
+    <string name="left_flag">暂时无任何数据</string>
+    <string name="bar_open">open</string>
+    <string name="bar_close">close</string>
 </resources>
