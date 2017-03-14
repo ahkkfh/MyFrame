@@ -31,8 +31,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>-->
         </activity>
-        <activity android:name=".ui.RegiestActivity" />
-
+        <!--<activity android:name=".ui.RegiestActivity" />-->
+        <activity android:name=".ui.PhotoViewActivity"/>
         <meta-data
             android:name="design_width"
             android:value="720" />

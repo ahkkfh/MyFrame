@@ -10,6 +10,7 @@ ext {
     logansquareVersion = '1.1.0'
 
     supportDependencies = [
+            fresco               : "compile 'com.facebook.fresco:fresco:0.12.0'",//图片加载框架
             greendao             : "org.greenrobot:greendao:$greendaoVersion",//数据库操作支付库
             greendaoGenerator    : "org.greenrobot:greendao-generator:$greendaoVersion",//数据创建支持库
             fresco               : "com.facebook.fresco:fresco:0.9.0+",//图片加载框架
@@ -46,5 +47,7 @@ ext {
             //引入第三方的ui引用
             autolayout           : "com.zhy:autolayout:1.4.3",
             filedownloader       : "com.liulishuo.filedownloader:library:0.3.3",
+            support_annotations  : "com.android.support:support-annotations:23.0.1",
+            subsamplingScaleImageView:'com.davemorrissey.labs:subsampling-scale-image-view:3.5.0',//长图加载依赖库
     ]
 }

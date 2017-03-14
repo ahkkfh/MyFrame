@@ -2,7 +2,6 @@ package cn.mark.network.retrofit.service;
 
 import java.util.Map;
 
-import cn.mark.network.retrofit.bean.userjson.UpdateApkBean;
 import cn.mark.network.retrofit.bean.userjson.UserBean;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -24,9 +23,9 @@ public interface UserService {
     Observable<UserBean> login(@QueryMap Map<String, Object> params, @Field("account") String account, @Field("password") String password);
 
     //查询是否更新apk信息
-    @POST("/Upgrade/Check")
-    @FormUrlEncoded
-    Observable<UpdateApkBean> updateApk(@QueryMap Map<String, Object> params, @Field("version_code") String version_code);
+//    @POST("/Upgrade/Check")
+//    @FormUrlEncoded
+//    Observable<UpdateApkBean> updateApk(@QueryMap Map<String, Object> params, @Field("version_code") String version_code);
 
 
     //下载Apk

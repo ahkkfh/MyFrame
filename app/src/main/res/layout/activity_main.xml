@@ -98,14 +98,27 @@
             android:id="@+id/update_apk"
             android:layout_width="match_parent"
             android:layout_height="80px"
-            android:layout_below="@+id/user_regiest_button"
-            android:layout_marginLeft="25px"
-            android:layout_marginRight="25px"
-            android:layout_marginTop="50px"
+            android:layout_marginTop="25dp"
             android:background="@drawable/bg_ff7200"
             android:gravity="center"
             android:text="@string/update_apk"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_17" />
+            android:textSize="@dimen/text_17"
+            android:layout_below="@+id/user_regiest_button"
+            android:layout_alignLeft="@+id/user_regiest_button"
+            android:layout_alignRight="@+id/user_regiest_button" />
+        <TextView
+            android:id="@+id/loading_longView"
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/bg_ff7200"
+            android:gravity="center"
+            android:text="show long image"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_17"
+            android:layout_below="@+id/update_apk"
+            android:layout_alignLeft="@+id/update_apk"
+            android:layout_alignRight="@+id/update_apk" />
     </RelativeLayout>
 </layout>

@@ -3,6 +3,7 @@ package cn.mark.frame.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.view.Menu;
 import android.widget.Toast;
 
 import com.jakewharton.rxbinding.view.RxView;
@@ -37,6 +38,7 @@ public class MainActivity extends BaseActivity implements UserController.LoginUi
         setHeadTitle(R.string.user_login_title);
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -67,10 +69,15 @@ public class MainActivity extends BaseActivity implements UserController.LoginUi
         RxView.clicks(binding.userRegiestButton).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
-                startActivity(new Intent(MainActivity.this, RegiestActivity.class));
+//                startActivity(new Intent(MainActivity.this, RegiestActivity.class));
             }
         });
-
+        RxView.clicks(binding.loadingLongView).throttleFirst(Constant.defaultClickTime,TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                startActivity(new Intent(MainActivity.this,PhotoViewActivity.class));
+            }
+        });
     }
 
     private void userLogin() {

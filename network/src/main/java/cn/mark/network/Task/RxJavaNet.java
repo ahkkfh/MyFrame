@@ -18,7 +18,6 @@ import rx.schedulers.Schedulers;
 /**
  * Created by yaoping on 2016/5/26.
  */
-
 public abstract class RxJavaNet<T extends InfoBean> extends Subscriber<T> {
     protected Observable<T> srvObservable;
 

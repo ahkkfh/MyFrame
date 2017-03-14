@@ -2,12 +2,8 @@ package cn.mark.network.controller;
 
 import android.content.Context;
 import android.util.Base64;
-
 import cn.mark.network.Task.user.ActionUserLogin;
-import cn.mark.network.Task.user.FetchUpdateInfo;
 import cn.mark.network.Task.utils.ActionDownloadApk;
-import cn.mark.network.retrofit.bean.userjson.DownloadBean;
-import cn.mark.network.retrofit.bean.userjson.UpdateApkBean;
 import cn.mark.network.retrofit.bean.userjson.UserBean;
 import cn.mark.utils.AppSystemUtil;
 
@@ -32,9 +28,9 @@ public class UserController extends BaseUIController<UserController.UserUi, User
     }
 
     public interface UpdateApkUi extends UserUi {
-        void FeachUpdateInfo(UpdateApkBean bean);
+//        void FeachUpdateInfo(UpdateApkBean bean);
 
-        void downloadApk(DownloadBean bean);
+//        void downloadApk(DownloadBean bean);
     }
 
     @Override
@@ -51,12 +47,12 @@ public class UserController extends BaseUIController<UserController.UserUi, User
             return new UpdateApkCallback() {
                 @Override
                 public void feachUpdateInfo(String version_code) {
-                    new UpdateApkTask(applicationState.getLoginedUser().getToken(), version_code).execute();
+//                    new UpdateApkTask(applicationState.getLoginedUser().getToken(), version_code).execute();
                 }
 
                 @Override
                 public void downloadApk(Context context, String downloadUrl) {
-                    new ActionDownloadApk(context, downloadUrl).execute();
+//                    new ActionDownloadApk(context, downloadUrl).execute();
                 }
             };
         }
@@ -74,23 +70,23 @@ public class UserController extends BaseUIController<UserController.UserUi, User
         void userLogin(String account, String password);
     }
 
-    public class UpdateApkTask extends FetchUpdateInfo {
-
-        public UpdateApkTask(String token, String version_code) {
-            super(token, version_code);
-        }
-
-        @Override
-        public void onNext(UpdateApkBean data) {
-            //循环获取UI，判断是否为登录UI，设置获取到数据给view层
-            for (Ui ui : getUis()) {
-                if (ui instanceof UpdateApkUi) {
-                    ((UpdateApkUi) ui).FeachUpdateInfo(data);
-                    break;
-                }
-            }
-        }
-    }
+//    public class UpdateApkTask extends FetchUpdateInfo {
+//
+//        public UpdateApkTask(String token, String version_code) {
+//            super(token, version_code);
+//        }
+//
+//        @Override
+//        public void onNext(UpdateApkBean data) {
+//            //循环获取UI，判断是否为登录UI，设置获取到数据给view层
+//            for (Ui ui : getUis()) {
+//                if (ui instanceof UpdateApkUi) {
+//                    ((UpdateApkUi) ui).FeachUpdateInfo(data);
+//                    break;
+//                }
+//            }
+//        }
+//    }
 
     public class UserLoginTask extends ActionUserLogin {
         public UserLoginTask(String account, String password) {

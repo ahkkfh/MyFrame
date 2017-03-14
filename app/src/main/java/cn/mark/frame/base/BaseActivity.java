@@ -1,6 +1,5 @@
 package cn.mark.frame.base;
 
-import android.text.style.IconMarginSpan;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;

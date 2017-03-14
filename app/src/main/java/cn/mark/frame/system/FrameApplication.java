@@ -2,6 +2,7 @@ package cn.mark.frame.system;
 
 import android.app.Application;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.stetho.Stetho;
 import com.liulishuo.filedownloader.FileDownloader;
 
@@ -21,6 +22,7 @@ public class FrameApplication extends Application {
         //Chrome plug-in initialization code debugging tools
         //Chome插件调试工具的初始化代码
         Stetho.initializeWithDefaults(this);
+        Fresco.initialize(this);
         FileDownloader.init(getApplicationContext());
     }
 

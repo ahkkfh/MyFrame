@@ -7,12 +7,12 @@ fir {
     changeLog "fir的集成测试"//设置更新日志
 }
 android {
-    compileSdkVersion 23 //编译sdk版本
-    buildToolsVersion "23.0.3" //build tools 版本
+    compileSdkVersion 25 //编译sdk版本
+    buildToolsVersion '25.0.0' //build tools 版本
     defaultConfig {
         applicationId "cn.mark.frame" //应用包名
         minSdkVersion 15 //最低支持版本
-        targetSdkVersion 23 //目标sdk版本
+        targetSdkVersion 25 //目标sdk版本
         versionCode 1  //版本号
         versionName "1.0.0"//版本名
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -45,12 +45,14 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile supportDependencies.appCompat
-    compile supportDependencies.constraint
+    compile supportDependencies.fresco//设置图片加载
     compile supportDependencies.autolayout
     compile supportDependencies.rxbinding
     compile supportDependencies.stetho
     compile supportDependencies.recyclerView
     compile supportDependencies.logger
+    compile supportDependencies.subsamplingScaleImageView//长图加载
+    compile supportDependencies.glide
 
     androidTestCompile supportDependencies.testEspresso
     androidTestCompile supportDependencies.testRunner
