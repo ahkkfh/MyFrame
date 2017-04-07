@@ -33,7 +33,6 @@
         </activity>
         <!--<activity android:name=".ui.RegiestActivity" />-->
         <activity android:name=".ui.PhotoViewActivity"/>
-        <activity android:name=".ui.StatusBarActivity"/>
         <activity android:name=".ui.ColorStatusBarActivity"/>
         <activity android:name=".ui.ImageStatusBarActivity"/>
         <activity android:name=".ui.SwipeBackActivity"/>

@@ -1,4 +1,4 @@
-package cn.mark.frame.ui;
+package cn.mark.frame.ui.fragment;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;

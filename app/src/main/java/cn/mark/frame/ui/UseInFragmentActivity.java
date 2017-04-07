@@ -17,6 +17,8 @@ import java.util.Random;
 import cn.mark.frame.R;
 import cn.mark.frame.base.BaseActivity;
 import cn.mark.frame.databinding.ActivityUseInFragmentBinding;
+import cn.mark.frame.ui.fragment.ImageFragment;
+import cn.mark.frame.ui.fragment.SimpleFragment;
 import cn.mark.utils.StatusBarUtil;
 
 /***

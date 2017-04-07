@@ -1,124 +1,99 @@
 package cn.mark.frame.ui;
 
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 
-import com.jakewharton.rxbinding.view.RxView;
+import com.ashokvarma.bottomnavigation.BottomNavigationBar;
+import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 
-import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
+import java.util.List;
 
 import cn.mark.frame.R;
 import cn.mark.frame.base.BaseActivity;
-import cn.mark.frame.databinding.ActivityMainBinding;
-import cn.mark.frame.system.FrameApplication;
-import cn.mark.network.controller.UserController;
-import cn.mark.network.retrofit.bean.userjson.UserBean;
-import cn.mark.utils.CircularAnimUtil;
-import cn.mark.utils.Constant;
+import cn.mark.frame.databinding.ActivityHomeBinding;
+import cn.mark.frame.ui.fragment.HomeFragment;
+import cn.mark.frame.ui.fragment.LogingRegisFragment;
+import cn.mark.frame.ui.fragment.StatusBarFragment;
 import cn.mark.utils.StatusBarUtil;
-import rx.functions.Action1;
 
-public class MainActivity extends BaseActivity implements UserController.LoginUi {
-    private ActivityMainBinding binding;
-    private UserController userController;
-    private UserController.UserLoginCallback userLoginCallback;
+/***
+ * @author marks.luo
+ * @Description: TODO()
+ * @date:2017-04-07 17:09
+ */
+public class MainActivity extends BaseActivity {
+    private ActivityHomeBinding mBinding;
+    private List<Fragment> mFragments = new ArrayList<>();
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         initView();
-        initClick();
     }
 
     private void initView() {
-        //设置toolbar
-        setSupportActionBar(binding.toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("MainActivty");
-        }
-    }
-
-    @Override
-    protected void setStatusBar() {//设置toolbar的颜色
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.color_52b6b2), 0);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        userController.attachUi(this);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        userController.detachUi(this);
-    }
-
-    private void initClick() {
-        userController = FrameApplication.getApplicationHelper().getMainController().getUserController();
-        RxView.clicks(binding.userLoginButton).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
+        mBinding.homeBottomBar
+                .addItem(new BottomNavigationItem(R.drawable.ic_favorite, "home"))
+                .addItem(new BottomNavigationItem(R.drawable.ic_gavel, "login"))
+                .addItem(new BottomNavigationItem(R.drawable.ic_group_work, "statusbar"))
+                .initialise();
+        mBinding.homeBottomBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
             @Override
-            public void call(Void aVoid) {
-                userLogin();
-                CircularAnimUtil.hide(binding.userLoginButton);//动画效果隐藏按钮
+            public void onTabSelected(int position) {
+                mBinding.homeViewPager.setCurrentItem(position);
+            }
+
+            @Override
+            public void onTabUnselected(int position) {
+
+            }
+
+            @Override
+            public void onTabReselected(int position) {
+
             }
         });
-        RxView.clicks(binding.updateApk).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
+        mFragments.add(new HomeFragment());
+        mFragments.add(new LogingRegisFragment());
+        mFragments.add(new StatusBarFragment());
+        mBinding.homeViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void call(Void aVoid) {
-                startActivity(new Intent(MainActivity.this, UpdateApkActivity.class));
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mBinding.homeBottomBar.selectTab(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
-        RxView.clicks(binding.userRegiestButton).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
+        mBinding.homeViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
-            public void call(Void aVoid) {
-//                startActivity(new Intent(MainActivity.this, RegiestActivity.class));
+            public Fragment getItem(int position) {
+                return mFragments.get(position);
             }
-        });
-        RxView.clicks(binding.loadingLongView).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
+
             @Override
-            public void call(Void aVoid) {
-                startActivity(new Intent(MainActivity.this, PhotoViewActivity.class));
-            }
-        });
-        RxView.clicks(binding.statusBarLayout).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
-            @Override
-            public void call(Void aVoid) {
-                startActivity(new Intent(MainActivity.this, StatusBarActivity.class));
+            public int getCount() {
+                return mFragments.size();
             }
         });
     }
 
-    private void userLogin() {
-        String account = binding.userLoginInputAccount.getText().toString().trim();
-        String password = binding.userLoginInputPassword.getText().toString().trim();
-        if (Constant.stringIsAir.equals(account)) {
-            Toast.makeText(this, getString(R.string.user_login_account_input_hint), Toast.LENGTH_LONG).show();
-            return;
-        }
-        if (Constant.stringIsAir.equals(password)) {
-            Toast.makeText(this, getString(R.string.user_login_password_input_hint), Toast.LENGTH_LONG).show();
-            return;
-        }
-        userLoginCallback.userLogin(account, password);
-    }
-
     @Override
-    public void userLoginBack(UserBean userBean) {
-        if (userBean.error_code == Constant.requestSuccess) {
-            Toast.makeText(this, getString(R.string.user_login_request_success_hint), Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, UpdateApkActivity.class));
-        } else {
-            Toast.makeText(this, userBean.error_msg, Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
-    public void setCallbacks(UserController.UserUiCallback callbacks) {
-        userLoginCallback = (UserController.UserLoginCallback) callbacks;
+    protected void setStatusBar() {
+        StatusBarUtil.setTranslucentForImageViewInFragment(MainActivity.this, null);
     }
 }
+

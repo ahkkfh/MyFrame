@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+<layout>
 
     <data/>
 
-    <RelativeLayout
-        android:id="@+id/activity_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/color_f0f0f0">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/activity_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/login_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
             android:background="@color/color_52b6b2"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
@@ -23,7 +23,7 @@
             android:id="@+id/user_login_accout"
             android:layout_width="wrap_content"
             android:layout_height="98px"
-            android:layout_below="@+id/toolbar"
+            android:layout_below="@+id/login_toolbar"
             android:layout_marginTop="20px"
             android:background="@color/white"
             android:gravity="center"
@@ -32,13 +32,13 @@
             android:text="@string/user_login_account_hint"
             android:textColor="@color/color_2c3e50"
             android:textSize="@dimen/text_15"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
 
         <EditText
             android:id="@+id/user_login_input_account"
             android:layout_width="match_parent"
             android:layout_height="98px"
-            android:layout_below="@+id/base_head_layout"
+            android:layout_below="@+id/login_toolbar"
             android:layout_marginTop="20px"
             android:layout_toRightOf="@+id/user_login_accout"
             android:background="@color/white"
@@ -46,7 +46,7 @@
             android:text="18503006254"
             android:textColor="@color/color_2c3e50"
             android:textSize="@dimen/text_15"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
 
         <TextView
             android:id="@+id/user_login_password"
@@ -61,7 +61,7 @@
             android:text="@string/user_login_password_hint"
             android:textColor="@color/color_2c3e50"
             android:textSize="@dimen/text_15"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
 
         <EditText
             android:id="@+id/user_login_input_password"
@@ -76,7 +76,7 @@
             android:text="123456"
             android:textColor="@color/color_2c3e50"
             android:textSize="@dimen/text_15"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
 
         <TextView
             android:id="@+id/user_login_button"
@@ -120,32 +120,5 @@
             android:textColor="@color/white"
             android:textSize="@dimen/text_17"/>
 
-        <TextView
-            android:id="@+id/loading_longView"
-            android:layout_width="match_parent"
-            android:layout_height="80px"
-            android:layout_alignLeft="@+id/update_apk"
-            android:layout_alignRight="@+id/update_apk"
-            android:layout_below="@+id/update_apk"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/bg_ff7200"
-            android:gravity="center"
-            android:text="show long image"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_17"/>
-
-        <TextView
-            android:id="@+id/status_bar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="80px"
-            android:layout_alignLeft="@+id/update_apk"
-            android:layout_alignRight="@+id/update_apk"
-            android:layout_below="@+id/update_apk"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/bg_ff7200"
-            android:gravity="center"
-            android:text="statusBarColorChange"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_17"/>
     </RelativeLayout>
 </layout>
