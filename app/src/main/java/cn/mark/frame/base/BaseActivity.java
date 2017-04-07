@@ -1,5 +1,7 @@
 package cn.mark.frame.base;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -8,12 +10,23 @@ import android.widget.TextView;
 import com.zhy.autolayout.AutoLayoutActivity;
 
 import cn.mark.frame.R;
+import cn.mark.utils.StatusBarUtil;
 
 /**
  * Created by yaoping on 2016/6/22.
  * BaseActivity
  */
 public class BaseActivity extends AutoLayoutActivity {
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setStatusBar();
+    }
+
+    protected void setStatusBar() {
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary));
+    }
 
     protected void back() {
         setBackButtonVisibility(View.VISIBLE);

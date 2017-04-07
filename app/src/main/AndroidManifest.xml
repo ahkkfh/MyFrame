@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cn.mark.frame">
+          package="cn.mark.frame">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <!-- 用于读取手机当前的状态-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
     <!-- 写入扩展存储，向扩展卡写入数据，用于写入缓存定位数据-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
     <!-- 以下是使用wifi访问网络所需的权限 -->
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.GET_TASKS"/>
 
     <application
         android:name=".system.FrameApplication"
@@ -21,24 +21,31 @@
 
         <activity android:name=".ui.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity android:name=".ui.UpdateApkActivity">
-          <!--  <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            <!--  <intent-filter>
+                  <action android:name="android.intent.action.MAIN" />
+                  <category android:name="android.intent.category.LAUNCHER" />
+              </intent-filter>-->
         </activity>
         <!--<activity android:name=".ui.RegiestActivity" />-->
         <activity android:name=".ui.PhotoViewActivity"/>
+        <activity android:name=".ui.StatusBarActivity"/>
+        <activity android:name=".ui.ColorStatusBarActivity"/>
+        <activity android:name=".ui.ImageStatusBarActivity"/>
+        <activity android:name=".ui.SwipeBackActivity"/>
+        <activity android:name=".ui.UseInFragmentActivity"/>
+        <activity android:name=".ui.ImageViewActivity"/>
+
         <meta-data
             android:name="design_width"
-            android:value="720" />
+            android:value="720"/>
         <meta-data
             android:name="design_height"
-            android:value="1280" />
+            android:value="1280"/>
     </application>
 
 </manifest>

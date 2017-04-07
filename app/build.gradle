@@ -7,7 +7,7 @@ fir {
     changeLog "fir的集成测试"//设置更新日志
 }
 android {
-    compileSdkVersion 25 //编译sdk版本
+    compileSdkVersion 25//编译sdk版本
     buildToolsVersion '25.0.0' //build tools 版本
     defaultConfig {
         applicationId "cn.mark.frame" //应用包名
@@ -53,10 +53,11 @@ dependencies {
     compile supportDependencies.logger
     compile supportDependencies.subsamplingScaleImageView//长图加载
     compile supportDependencies.glide
+    compile supportDependencies.bottomNavigation
 
-    androidTestCompile supportDependencies.testEspresso
-    androidTestCompile supportDependencies.testRunner
-    androidTestCompile supportDependencies.testAnnotations
+//    androidTestCompile supportDependencies.testEspresso
+//    androidTestCompile supportDependencies.testRunner
+//    androidTestCompile supportDependencies.testAnnotations
     //编译MyFrame下的所有module
     compile project(path: ":utils")
     compile project(path: ":network")

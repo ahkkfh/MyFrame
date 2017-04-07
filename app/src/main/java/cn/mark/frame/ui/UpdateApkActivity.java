@@ -3,9 +3,6 @@ package cn.mark.frame.ui;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
 import com.jakewharton.rxbinding.view.RxView;
 
@@ -16,14 +13,12 @@ import cn.mark.frame.base.BaseActivity;
 import cn.mark.frame.databinding.UpdateApkBinding;
 import cn.mark.frame.system.FrameApplication;
 import cn.mark.network.controller.UserController;
-//import cn.mark.network.retrofit.bean.userjson.DownloadBean;
-//import cn.mark.network.retrofit.bean.userjson.UpdateApkBean;
 import cn.mark.utils.Constant;
 import cn.mark.utils.DialogUtils;
-import cn.mark.utils.InstallUtils;
-import cn.mark.utils.LogUtils;
-import cn.mark.utils.ToastUtil;
 import rx.functions.Action1;
+
+//import cn.mark.network.retrofit.bean.userjson.DownloadBean;
+//import cn.mark.network.retrofit.bean.userjson.UpdateApkBean;
 
 /**
  * Created by yaoping on 2016/6/7.
@@ -36,7 +31,7 @@ public class UpdateApkActivity extends BaseActivity implements UserController.Up
     private DialogUtils dialogUtils;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.update_apk);
         initClick();

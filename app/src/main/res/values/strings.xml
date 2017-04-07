@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">我的框架</string>
+    <string name="app_name">MVP_Frame</string>
     <string name="user_login_title">登录</string>
     <string name="user_registered_title">注册</string>
     <string name="update_apk">更新apk</string>
@@ -25,4 +25,7 @@
     <string name="regiest_code_hint">验证码</string>
     <string name="regiest_password_hint">密码</string>
     <string name="regiest_input_hint">手机号/邮箱</string>
+
+    <string name="navigation_drawer_open">open</string>
+    <string name="navigation_drawer_close">close</string>
 </resources>

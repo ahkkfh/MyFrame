@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion '25.0.0'
 
     defaultConfig {
@@ -29,6 +29,7 @@ dependencies {
     compile supportDependencies.appCompat//compile 'com.android.support:appcompat-v7:23.4.0'
     compile supportDependencies.logger//logger为log日志格式化依赖库
     compile supportDependencies.appCompat
-    compile "com.android.support:recyclerview-v7:23.1.1"
-
+    compile supportDependencies.materialDesign
+    compile supportDependencies.recyclerView
+//    compile "com.android.support:recyclerview-v7:25.1.0"
 }

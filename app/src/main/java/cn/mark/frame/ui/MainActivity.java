@@ -3,7 +3,6 @@ package cn.mark.frame.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.view.Menu;
 import android.widget.Toast;
 
 import com.jakewharton.rxbinding.view.RxView;
@@ -18,6 +17,7 @@ import cn.mark.network.controller.UserController;
 import cn.mark.network.retrofit.bean.userjson.UserBean;
 import cn.mark.utils.CircularAnimUtil;
 import cn.mark.utils.Constant;
+import cn.mark.utils.StatusBarUtil;
 import rx.functions.Action1;
 
 public class MainActivity extends BaseActivity implements UserController.LoginUi {
@@ -26,7 +26,7 @@ public class MainActivity extends BaseActivity implements UserController.LoginUi
     private UserController.UserLoginCallback userLoginCallback;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         initView();
@@ -34,10 +34,17 @@ public class MainActivity extends BaseActivity implements UserController.LoginUi
     }
 
     private void initView() {
-        back();
-        setHeadTitle(R.string.user_login_title);
+        //设置toolbar
+        setSupportActionBar(binding.toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("MainActivty");
+        }
     }
 
+    @Override
+    protected void setStatusBar() {//设置toolbar的颜色
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.color_52b6b2), 0);
+    }
 
     @Override
     protected void onResume() {
@@ -72,10 +79,16 @@ public class MainActivity extends BaseActivity implements UserController.LoginUi
 //                startActivity(new Intent(MainActivity.this, RegiestActivity.class));
             }
         });
-        RxView.clicks(binding.loadingLongView).throttleFirst(Constant.defaultClickTime,TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
+        RxView.clicks(binding.loadingLongView).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
-                startActivity(new Intent(MainActivity.this,PhotoViewActivity.class));
+                startActivity(new Intent(MainActivity.this, PhotoViewActivity.class));
+            }
+        });
+        RxView.clicks(binding.statusBarLayout).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                startActivity(new Intent(MainActivity.this, StatusBarActivity.class));
             }
         });
     }

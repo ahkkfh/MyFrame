@@ -1,15 +1,13 @@
 apply plugin: 'com.android.library'
-apply plugin: "com.neenbedankt.android-apt"//设置dagger2引入
-apply plugin: 'com.neenbedankt.android-apt'
 
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion '25.0.0'
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
 
@@ -29,7 +27,7 @@ dependencies {
     compile supportDependencies.appCompat
     androidTestCompile supportDependencies.testEspresso
     androidTestCompile supportDependencies.testRunner
-    androidTestCompile supportDependencies.testAnnotations
+//    androidTestCompile supportDependencies.testAnnotations
 
     compile supportDependencies.greendao//数据库操作支持库
     compile supportDependencies.greendaoGenerator //数据库创建支持库
@@ -38,13 +36,13 @@ dependencies {
     compile supportDependencies.rxadapter
     compile supportDependencies.rxjava
     compile supportDependencies.rxandroid
-    compile supportDependencies.dagger
-    compile supportDependencies.daggerCompiler
-    provided(supportDependencies.annotation)
+    compile 'com.google.dagger:dagger:2.0.1'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.0.1'
     compile supportDependencies.stethOkhttp3
     compile supportDependencies.okhttpLog
     compile supportDependencies.filedownloader//文件下载
-    apt 'com.bluelinelabs:logansquare-compiler:1.1.0'
+    provided(supportDependencies.annotation)
+//    annotationProcessor 'com.bluelinelabs:logansquare-compiler:1.1.0'
     compile supportDependencies.logansquare//更快的json解析
     compile project(path: ':utils')//引入Utils模块
 }
