@@ -6,21 +6,62 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:background="@color/white">
 
-        <ImageView
+
+        <com.mark.videoplay.JCVideoPlayerStandard
+            android:id="@+id/jc_video"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/bg_girl"/>
+            android:layout_height="200dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/tiny_window"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20dp"
-            android:text="this is homePage"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp"/>
+            android:layout_below="@+id/jc_video"
+            android:layout_gravity="center_horizontal"
+            android:text="上方的Video正在播放时点击小窗口"/>
+
+
+        <Button
+            android:id="@+id/auto_tiny_window"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tiny_window"
+            android:layout_gravity="center_horizontal"
+            android:text="Auto tiny window"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/play_directly_without_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/auto_tiny_window"
+            android:layout_gravity="center_horizontal"
+            android:text="没有直播的布局"/>
+
+        <Button
+            android:id="@+id/about_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/play_directly_without_layout"
+            android:layout_gravity="center_horizontal"
+            android:text="About ListView"/>
+
+        <Button
+            android:id="@+id/about_api"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/about_listview"
+            android:layout_gravity="center_horizontal"
+            android:text="About Api"/>
+
+        <Button
+            android:id="@+id/about_webview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/about_api"
+            android:layout_gravity="center_horizontal"
+            android:text="About WebView"/>
     </RelativeLayout>
 </layout>

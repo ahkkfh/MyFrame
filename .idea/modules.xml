@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/dbcreate/dbcreate.iml" filepath="$PROJECT_DIR$/dbcreate/dbcreate.iml" />
       <module fileurl="file://$PROJECT_DIR$/network/network.iml" filepath="$PROJECT_DIR$/network/network.iml" />
       <module fileurl="file://$PROJECT_DIR$/utils/utils.iml" filepath="$PROJECT_DIR$/utils/utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/videoplay/videoplay.iml" filepath="$PROJECT_DIR$/videoplay/videoplay.iml" />
     </modules>
   </component>
 </project>

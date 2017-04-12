@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
+
+        <com.mark.videoplay.JCVideoPlayerStandard
+            android:id="@+id/jc_video"
+            android:layout_width="300dp"
+            android:layout_height="300dp"/>
+    </LinearLayout>
+</layout>

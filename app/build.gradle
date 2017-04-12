@@ -53,6 +53,7 @@ dependencies {
     compile supportDependencies.logger
     compile supportDependencies.subsamplingScaleImageView//长图加载
     compile supportDependencies.glide
+    compile supportDependencies.materialDesign
     compile supportDependencies.bottomNavigation
 
 //    androidTestCompile supportDependencies.testEspresso
@@ -60,5 +61,6 @@ dependencies {
 //    androidTestCompile supportDependencies.testAnnotations
     //编译MyFrame下的所有module
     compile project(path: ":utils")
+    compile project(path: ":videoplay")
     compile project(path: ":network")
 }

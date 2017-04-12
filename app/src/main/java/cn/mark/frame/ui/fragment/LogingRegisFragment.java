@@ -17,13 +17,11 @@ import cn.mark.frame.R;
 import cn.mark.frame.base.BaseFragment;
 import cn.mark.frame.databinding.FragmentLoginBinding;
 import cn.mark.frame.system.FrameApplication;
-import cn.mark.frame.ui.MainActivity;
-import cn.mark.frame.ui.UpdateApkActivity;
+import cn.mark.frame.ui.activity.UpdateApkActivity;
 import cn.mark.network.controller.UserController;
 import cn.mark.network.retrofit.bean.userjson.UserBean;
 import cn.mark.utils.CircularAnimUtil;
 import cn.mark.utils.Constant;
-import cn.mark.utils.StatusBarUtil;
 import rx.functions.Action1;
 
 /***
@@ -48,10 +46,6 @@ public class LogingRegisFragment extends BaseFragment implements UserController.
 
     private void initView() {
         userController = FrameApplication.getApplicationHelper().getMainController().getUserController();
-        ((MainActivity) getActivity()).setSupportActionBar(mBinding.loginToolbar);
-        if (((MainActivity) getActivity()).getSupportActionBar() != null) {
-            ((MainActivity) getActivity()).getSupportActionBar().setTitle("Login And Regis");
-        }
         initClick();
     }
 
@@ -89,11 +83,6 @@ public class LogingRegisFragment extends BaseFragment implements UserController.
             return;
         }
         userLoginCallback.userLogin(account, password);
-    }
-
-    @Override
-    protected void setStatusBar() {
-        StatusBarUtil.setColor(getActivity(), getResources().getColor(R.color.color_52b6b2), 0);
     }
 
     @Override

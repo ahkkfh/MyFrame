@@ -4,26 +4,16 @@
     <data/>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/activity_main"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/login_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/color_52b6b2"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
-
         <TextView
             android:id="@+id/user_login_accout"
             android:layout_width="wrap_content"
             android:layout_height="98px"
-            android:layout_below="@+id/login_toolbar"
             android:layout_marginTop="20px"
             android:background="@color/white"
             android:gravity="center"
@@ -38,7 +28,6 @@
             android:id="@+id/user_login_input_account"
             android:layout_width="match_parent"
             android:layout_height="98px"
-            android:layout_below="@+id/login_toolbar"
             android:layout_marginTop="20px"
             android:layout_toRightOf="@+id/user_login_accout"
             android:background="@color/white"

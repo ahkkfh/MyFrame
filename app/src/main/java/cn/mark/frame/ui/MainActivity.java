@@ -16,9 +16,10 @@ import java.util.List;
 import cn.mark.frame.R;
 import cn.mark.frame.base.BaseActivity;
 import cn.mark.frame.databinding.ActivityHomeBinding;
+import cn.mark.frame.ui.fragment.CenterFragment;
 import cn.mark.frame.ui.fragment.HomeFragment;
 import cn.mark.frame.ui.fragment.LogingRegisFragment;
-import cn.mark.frame.ui.fragment.StatusBarFragment;
+import cn.mark.frame.ui.fragment.TwoFragment;
 import cn.mark.utils.StatusBarUtil;
 
 /***
@@ -29,6 +30,7 @@ import cn.mark.utils.StatusBarUtil;
 public class MainActivity extends BaseActivity {
     private ActivityHomeBinding mBinding;
     private List<Fragment> mFragments = new ArrayList<>();
+    private String[] arrays = new String[]{"Home", "Two", "Login&Regiest", "Center"};
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,15 +39,19 @@ public class MainActivity extends BaseActivity {
         initView();
     }
 
-    private void initView() {
+    protected void initView() {
+        setSupportActionBar(mBinding.toolbar);
+        getSupportActionBar().setTitle("Home");
         mBinding.homeBottomBar
-                .addItem(new BottomNavigationItem(R.drawable.ic_favorite, "home"))
-                .addItem(new BottomNavigationItem(R.drawable.ic_gavel, "login"))
-                .addItem(new BottomNavigationItem(R.drawable.ic_group_work, "statusbar"))
+                .addItem(new BottomNavigationItem(R.drawable.ic_favorite, arrays[0]))
+                .addItem(new BottomNavigationItem(R.drawable.ic_gavel, arrays[1]))
+                .addItem(new BottomNavigationItem(R.drawable.ic_group_work, arrays[2]))
+                .addItem(new BottomNavigationItem(R.drawable.ic_avatar, arrays[3]))
                 .initialise();
         mBinding.homeBottomBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position) {
+                getSupportActionBar().setTitle(arrays[position]);
                 mBinding.homeViewPager.setCurrentItem(position);
             }
 
@@ -60,8 +66,9 @@ public class MainActivity extends BaseActivity {
             }
         });
         mFragments.add(new HomeFragment());
+        mFragments.add(new TwoFragment());
         mFragments.add(new LogingRegisFragment());
-        mFragments.add(new StatusBarFragment());
+        mFragments.add(new CenterFragment());
         mBinding.homeViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -70,6 +77,7 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int position) {
+                getSupportActionBar().setTitle(arrays[position]);
                 mBinding.homeBottomBar.selectTab(position);
             }
 
@@ -93,7 +101,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void setStatusBar() {
-        StatusBarUtil.setTranslucentForImageViewInFragment(MainActivity.this, null);
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.color_02D1B1), 120);
     }
 }
 
