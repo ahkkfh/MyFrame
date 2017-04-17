@@ -31,5 +31,6 @@ dependencies {
     compile supportDependencies.appCompat
     compile supportDependencies.materialDesign
     compile supportDependencies.recyclerView
+    compile supportDependencies.zxing
 //    compile "com.android.support:recyclerview-v7:25.1.0"
 }

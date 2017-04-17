@@ -50,5 +50,6 @@ ext {
             support_annotations      : "com.android.support:support-annotations:23.0.1",
             subsamplingScaleImageView: 'com.davemorrissey.labs:subsampling-scale-image-view:3.5.0',//长图加载依赖库
             bottomNavigation         : 'com.ashokvarma.android:bottom-navigation-bar:1.3.0',//底部按钮
+            zxing                    : 'com.google.zxing:core:3.2.1',//zxing（二维码扫描）
     ]
 }

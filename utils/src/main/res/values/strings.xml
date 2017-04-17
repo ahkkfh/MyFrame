@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Utils</string>
     <string name="empty_view_hint_text">暂时没有数据</string>
+
+    <string name="encode_qrcode">生成二维码</string>
+    <string name="dencode_qrcode">扫描二维码</string>
 </resources>

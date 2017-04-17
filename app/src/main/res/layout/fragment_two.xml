@@ -7,14 +7,52 @@
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
                   android:background="@color/white"
-                  android:gravity="center"
                   android:orientation="vertical">
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="二维码扫描和长按二维码获取信息"
+            android:textColor="@color/color_2c3e50"
+            android:textSize="15sp"/>
+
+        <Button
+            android:id="@+id/scan_qr_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="二维码扫描"/>
+
+        <Button
+            android:id="@+id/qrcode_encode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/encode_qrcode"/>
+
+
+        <ImageView
+            android:id="@+id/qrcode_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="this two Fragment"
+            android:layout_gravity="center_horizontal"/>
+
+        <ImageView
+            android:id="@+id/qr_code_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/qr_code"/>
+
+        <TextView
+            android:id="@+id/qr_code_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="显示二维码信息"
             android:textColor="@color/color_2c3e50"
-            android:textSize="20sp"/>
+            android:textSize="15sp"/>
     </LinearLayout>
 </layout>
