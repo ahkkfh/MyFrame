@@ -43,6 +43,7 @@ android {
 dependencies {
     //编译lib包下所有jar包
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile files('libs/fingerprint.jar')
     testCompile 'junit:junit:4.12'
     compile supportDependencies.appCompat
     compile supportDependencies.fresco//设置图片加载

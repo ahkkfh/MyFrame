@@ -109,5 +109,19 @@
             android:textColor="@color/white"
             android:textSize="@dimen/text_17"/>
 
+        <TextView
+            android:id="@+id/fingerprint_login"
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            android:layout_alignLeft="@+id/user_regiest_button"
+            android:layout_alignRight="@+id/user_regiest_button"
+            android:layout_below="@+id/update_apk"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/bg_ff7200"
+            android:gravity="center"
+            android:text="指纹登录"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_17"/>
+
     </RelativeLayout>
 </layout>
