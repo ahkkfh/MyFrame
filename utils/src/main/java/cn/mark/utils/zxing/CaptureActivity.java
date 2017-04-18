@@ -70,7 +70,7 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scanner);
         CameraManager.init(this);
-        ViewfinderView viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_content);
+        viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_content);
         hasSurface = false;
         inactivityTimer = new InactivityTimer(this);
         //添加Toolbar
@@ -182,9 +182,9 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
         super.onResume();
         SurfaceView surfaceView = (SurfaceView) findViewById(R.id.scanner_view);
         SurfaceHolder surfaceHolder = surfaceView.getHolder();
-        if (hasSurface){
+        if (hasSurface) {
             initCamera(surfaceHolder);
-        }else{
+        } else {
             surfaceHolder.addCallback(this);
             surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         }
@@ -215,6 +215,7 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
         inactivityTimer.shutdown();
         super.onDestroy();
     }
+
     /**
      * Handler scan result
      *
@@ -239,7 +240,9 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
         }
         CaptureActivity.this.finish();
     }
+
     private static final long VIBRATE_DURATION = 200L;
+
     private void playBeepSoundAndVibrate() {
         if (playBeep && mediaPlayer != null) {
             mediaPlayer.start();
@@ -287,6 +290,7 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
                     characterSet);
         }
     }
+
     public ViewfinderView getViewfinderView() {
         return viewfinderView;
     }
@@ -297,8 +301,8 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
 
     public void drawViewfinder() {
         viewfinderView.drawViewfinder();
-
     }
+
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         if (!hasSurface) {

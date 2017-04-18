@@ -28,4 +28,36 @@
 
     <string name="navigation_drawer_open">open</string>
     <string name="navigation_drawer_close">close</string>
+
+
+    <!-- Dialog info -->
+    <string name="no_sensor_dialog_title">无指纹传感器</string>
+    <string name="no_sensor_dialog_message">设备上没有指纹传感器，请点击取消</string>
+    <string name="no_fingerprint_enrolled_dialog_title">无录入指纹</string>
+    <string name="no_fingerprint_enrolled_dialog_message">No fingerprint enrolled, enter\n
+        <font fgcolor="green">Setting->Security->Nexus Imprint\n</font>
+        to enrollor click cancel to exit.</string>
+    <string name="ok_btn_dialog">确定</string>
+    <string name="cancel_btn_dialog">取消</string>
+
+    <string name="fingerprint_success">指纹识别</string>
+    <string name="fingerprint_not_recognized">指纹识别不了，请再试一次</string>
+
+    <string name="AcquiredGood_warning">The image acquired was good.</string>
+    <string name="AcquiredImageDirty_warning">由于怀疑或检测到传感器上的污垢，他的指纹图像太嘈杂。
+         例如，在多个AcquiredInsufficient或之后返回此项是合理的实际检测传感器上的污垢（卡住像素，条纹等）。
+         当返回时，用户将采取行动清洁传感器。</string>
+    <string name="AcquiredInsufficient_warning">由于检测到的条件（即皮肤干燥）或可能脏的传感器，指纹图像太嘈杂。</string>
+    <string name="AcquiredPartial_warning">只有部分指纹图像被检测到。在注册过程中，应通知用户需要解决的问题，例如“按压传感器”。</string>
+    <string name="AcquiredTooFast_warning">由于快速运动，指纹图像不完整。 虽然主要适用于线性阵列传感器，但如果在采集期间手指被移动，也可能发生这种情况。
+        应该要求用户将手指移动较慢（线性）或将手指放在传感器上。</string>
+    <string name="AcquiredToSlow_warning">指纹图像由于缺少运动而无法读取。这对于需要滑动运动的线性阵列传感器来说最为合适。</string>
+    <string name="ErrorCanceled_warning">由于指纹传感器不可用，操作被取消。 例如，当用户切换，设备被锁定或者另一个挂起的操作阻止或禁用它时，可能会发生这种情况。</string>
+    <string name="ErrorHwUnavailable_warning">硬件不可用。 稍后再试。</string>
+    <string name="ErrorLockout_warning">由于尝试次数过多，API被锁定，操作被取消。</string>
+    <string name="ErrorNoSpace_warning">返回错误状态，如注册等操作; 操作无法完成，因为剩余的存储空间不足以完成操作。</string>
+    <string name="ErrorTimeout_warning">当前请求运行时间过长时返回的错误状态。这是为了防止程序无限期地等待指纹传感器。超时是平台和传感器特定的，但通常约为30秒。</string>
+    <string name="ErrorUnableToProcess_warning">当传感器无法处理当前图像时返回错误状态。</string>
+
+
 </resources>
