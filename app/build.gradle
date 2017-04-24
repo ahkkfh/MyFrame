@@ -46,6 +46,7 @@ dependencies {
     compile files('libs/fingerprint.jar')
     testCompile 'junit:junit:4.12'
     compile supportDependencies.appCompat
+    compile supportDependencies.materialDesign
     compile supportDependencies.fresco//设置图片加载
     compile supportDependencies.autolayout
     compile supportDependencies.rxbinding

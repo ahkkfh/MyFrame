@@ -58,6 +58,9 @@
     <string name="ErrorNoSpace_warning">返回错误状态，如注册等操作; 操作无法完成，因为剩余的存储空间不足以完成操作。</string>
     <string name="ErrorTimeout_warning">当前请求运行时间过长时返回的错误状态。这是为了防止程序无限期地等待指纹传感器。超时是平台和传感器特定的，但通常约为30秒。</string>
     <string name="ErrorUnableToProcess_warning">当传感器无法处理当前图像时返回错误状态。</string>
+    <string name="title_activity_guide_pages">GuidePagesActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 
 
 </resources>

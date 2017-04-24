@@ -40,4 +40,6 @@
     <dimen name="px_30">30px</dimen>
 
     <dimen name="statusbar_view_height">0dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
 </resources>
