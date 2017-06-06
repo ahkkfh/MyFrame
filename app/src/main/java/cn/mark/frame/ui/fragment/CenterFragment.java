@@ -15,7 +15,9 @@ import java.util.concurrent.TimeUnit;
 import cn.mark.frame.R;
 import cn.mark.frame.base.BaseFragment;
 import cn.mark.frame.databinding.FragmentCenterBinding;
+import cn.mark.frame.ui.activity.ChartActivity;
 import cn.mark.frame.ui.activity.StatusBarActivty;
+import cn.mark.frame.ui.activity.TopTabActivity;
 import cn.mark.utils.Constant;
 import rx.functions.Action1;
 
@@ -42,6 +44,18 @@ public class CenterFragment extends BaseFragment {
             @Override
             public void call(Void aVoid) {
                 startActivity(new Intent(getActivity(), StatusBarActivty.class));
+            }
+        });
+        RxView.clicks(mBinding.chartButton).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                startActivity(new Intent(getActivity(), ChartActivity.class));
+            }
+        });
+        RxView.clicks(mBinding.topTab).throttleFirst(Constant.defaultClickTime,TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                startActivity(new Intent(getActivity(),TopTabActivity.class));
             }
         });
     }

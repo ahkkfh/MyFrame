@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:background="@color/white"
+                  android:orientation="vertical">
+
+        <VideoView
+            android:id="@+id/video_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:visibility="visible"/>
+
+        <SurfaceView
+            android:id="@+id/surface_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:keepScreenOn="true"
+            android:visibility="gone"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/video_view"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/try_shoot_video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_margin="5dp"
+                android:background="@color/color_02D1B1"
+                android:gravity="center"
+                android:text="试拍一下"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/jump_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:text="进入首页>"
+                android:textColor="@color/color_02D1B1"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

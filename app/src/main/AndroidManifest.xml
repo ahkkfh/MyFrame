@@ -55,6 +55,9 @@
             android:name=".ui.activity.PhotoViewActivity"
             android:theme="@style/NoActionBar"/>
         <activity
+            android:name=".ui.activity.VideoViewPlayActivity"
+            android:theme="@style/NoActionBar"/>
+        <activity
             android:name=".ui.activity.ColorStatusBarActivity"
             android:theme="@style/NoActionBar"/>
         <activity
@@ -116,6 +119,21 @@
             android:theme="@style/NoActionBar"/>
         <activity
             android:name="cn.mark.utils.zxing.CaptureActivity"
+            android:theme="@style/NoActionBar"/>
+        <activity
+            android:name=".ui.activity.ChartActivity"
+            android:theme="@style/NoActionBar"/>
+        <activity
+            android:name=".ui.activity.TopTabActivity"
+            android:theme="@style/NoActionBar"/>
+        <activity
+            android:name=".ui.activity.SlidingTabActivity"
+            android:theme="@style/NoActionBar"/>
+        <activity
+            android:name=".ui.activity.CommonTabActivity"
+            android:theme="@style/NoActionBar"/>
+        <activity
+            android:name=".ui.activity.SegmentTabActivity"
             android:theme="@style/NoActionBar"/>
 
         <meta-data

@@ -19,6 +19,7 @@ import cn.mark.frame.databinding.FragmentLoginBinding;
 import cn.mark.frame.system.FrameApplication;
 import cn.mark.frame.ui.activity.FingerprintActivity;
 import cn.mark.frame.ui.activity.UpdateApkActivity;
+import cn.mark.frame.ui.activity.VideoViewPlayActivity;
 import cn.mark.network.controller.UserController;
 import cn.mark.network.retrofit.bean.userjson.UserBean;
 import cn.mark.utils.CircularAnimUtil;
@@ -76,6 +77,12 @@ public class LogingRegisFragment extends BaseFragment implements UserController.
             @Override
             public void call(Void aVoid) {
             startActivity(new Intent(getActivity(),FingerprintActivity.class));
+            }
+        });
+        RxView.clicks(mBinding.videoViewPlay).throttleFirst(Constant.defaultClickTime,TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                startActivity(new Intent(getActivity(),VideoViewPlayActivity.class));
             }
         });
     }
