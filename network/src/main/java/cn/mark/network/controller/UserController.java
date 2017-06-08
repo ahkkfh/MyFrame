@@ -2,8 +2,9 @@ package cn.mark.network.controller;
 
 import android.content.Context;
 import android.util.Base64;
+import android.util.Log;
+
 import cn.mark.network.Task.user.ActionUserLogin;
-import cn.mark.network.Task.utils.ActionDownloadApk;
 import cn.mark.network.retrofit.bean.userjson.UserBean;
 import cn.mark.utils.AppSystemUtil;
 
@@ -106,6 +107,7 @@ public class UserController extends BaseUIController<UserController.UserUi, User
                 );
                 applicationState.saveUser(data.data);
                 AppSystemUtil.setUserToken(applicationState.getLoginedUser().getToken());
+                Log.i("lbxx", "获取数据成功==onNext");
             }
         }
 
@@ -115,6 +117,7 @@ public class UserController extends BaseUIController<UserController.UserUi, User
             for (Ui ui : getUis()) {
                 if (ui instanceof LoginUi) {
                     ((LoginUi) ui).userLoginBack(data);
+                    Log.i("lbxx", "登录成功==onNext");
                     break;
                 }
             }

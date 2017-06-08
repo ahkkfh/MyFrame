@@ -22,7 +22,6 @@ import cn.mark.frame.ui.activity.UpdateApkActivity;
 import cn.mark.frame.ui.activity.VideoViewPlayActivity;
 import cn.mark.network.controller.UserController;
 import cn.mark.network.retrofit.bean.userjson.UserBean;
-import cn.mark.utils.CircularAnimUtil;
 import cn.mark.utils.Constant;
 import rx.functions.Action1;
 
@@ -58,7 +57,7 @@ public class LogingRegisFragment extends BaseFragment implements UserController.
             @Override
             public void call(Void aVoid) {
                 userLogin();
-                CircularAnimUtil.hide(mBinding.userLoginButton);//动画效果隐藏按钮
+//                CircularAnimUtil.hide(mBinding.userLoginButton);//动画效果隐藏按钮
             }
         });
         RxView.clicks(mBinding.userRegiestButton).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {

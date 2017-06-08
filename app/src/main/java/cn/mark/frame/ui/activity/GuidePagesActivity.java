@@ -30,12 +30,12 @@ public class GuidePagesActivity extends AppCompatActivity {
     private int bgColors[];
     private int currentPosition;
     private ImageView[] indicators;
-    private SharedPreferences sp;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences sharedPreferences =  getSharedPreferences("Guide_page", Context.MODE_PRIVATE);
+         sharedPreferences =  getSharedPreferences("Guide_page", Context.MODE_PRIVATE);
         if (sharedPreferences.getBoolean("is_loading", true)) {
             mBinding = DataBindingUtil.setContentView(this, R.layout.activity_guide_pages);
             initView();
@@ -77,7 +77,7 @@ public class GuidePagesActivity extends AppCompatActivity {
         RxView.clicks(mBinding.buttonFinish).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
-                SharedPreferences.Editor editor = sp.edit();
+                SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("is_loading", false);
                 editor.apply();
                 navigateToMainActivity();

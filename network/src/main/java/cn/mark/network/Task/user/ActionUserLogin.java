@@ -1,5 +1,7 @@
 package cn.mark.network.Task.user;
 
+import org.reactivestreams.Subscription;
+
 import cn.mark.network.Task.PubParamNetExecuter;
 import cn.mark.network.retrofit.RetrofitServer;
 import cn.mark.network.retrofit.bean.userjson.UserBean;
@@ -26,6 +28,11 @@ public class ActionUserLogin extends PubParamNetExecuter<UserBean> {
 
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public void onSubscribe(Subscription s) {
+        
     }
 
     @Override
