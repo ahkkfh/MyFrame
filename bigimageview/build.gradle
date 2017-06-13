@@ -23,9 +23,21 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
     compile supportDependencies.appCompat
+    compile supportDependencies.progresspieview// progresspie
+    compile 'com.github.filippudak.progresspieview:library:1.0.4'
+    compile supportDependencies.glide// glide
+
+    compile supportDependencies.fresco// fresco
+    compile supportDependencies.commons// fresco
+
+
+    //BigImageView
+    compile supportDependencies.supportAnotations//
+    compile supportDependencies.scaleImageView//
+    // glide
+//    compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
+//    compile 'com.squareup.okhttp3:okhttp:3.6.0'
+
     testCompile 'junit:junit:4.12'
 }

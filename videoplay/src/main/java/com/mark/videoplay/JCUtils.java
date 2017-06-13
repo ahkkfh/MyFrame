@@ -15,7 +15,7 @@ import java.util.Locale;
 
 /***
  * @author marks.luo
- * @Description: TODO(播放器utils)
+ * @Description: (播放器utils)
  * @date:2017-04-10 11:32
  */
 public class JCUtils {

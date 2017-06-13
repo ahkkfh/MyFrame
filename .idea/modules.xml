@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CustomFrame.iml" filepath="$PROJECT_DIR$/CustomFrame.iml" />
       <module fileurl="file://$PROJECT_DIR$/MyFrame.iml" filepath="$PROJECT_DIR$/MyFrame.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dbcreate/dbcreate.iml" filepath="$PROJECT_DIR$/dbcreate/dbcreate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bigimageview/bigimageview.iml" filepath="$PROJECT_DIR$/bigimageview/bigimageview.iml" />
       <module fileurl="file://$PROJECT_DIR$/dbcreate/dbcreate.iml" filepath="$PROJECT_DIR$/dbcreate/dbcreate.iml" />
       <module fileurl="file://$PROJECT_DIR$/network/network.iml" filepath="$PROJECT_DIR$/network/network.iml" />
-      <module fileurl="file://$PROJECT_DIR$/network/network.iml" filepath="$PROJECT_DIR$/network/network.iml" />
       <module fileurl="file://$PROJECT_DIR$/utils/utils.iml" filepath="$PROJECT_DIR$/utils/utils.iml" />
-      <module fileurl="file://$PROJECT_DIR$/utils/utils.iml" filepath="$PROJECT_DIR$/utils/utils.iml" />
-      <module fileurl="file://$PROJECT_DIR$/videoplay/videoplay.iml" filepath="$PROJECT_DIR$/videoplay/videoplay.iml" />
       <module fileurl="file://$PROJECT_DIR$/videoplay/videoplay.iml" filepath="$PROJECT_DIR$/videoplay/videoplay.iml" />
     </modules>
   </component>

@@ -10,27 +10,21 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/status_bar_layout"
+            android:id="@+id/fresco_loader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="status_bar" />
+            android:text="fresco_loader" />
 
         <Button
-            android:id="@+id/chart_button"
+            android:id="@+id/long_iamge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="chart_bar" />
+            android:text="long_image" />
 
         <Button
-            android:id="@+id/top_tab"
+            android:id="@+id/mScaleType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="tab_Order" />
-
-        <Button
-            android:id="@+id/big_image_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="显示大图" />
+            android:text="scale_type" />
     </LinearLayout>
 </layout>

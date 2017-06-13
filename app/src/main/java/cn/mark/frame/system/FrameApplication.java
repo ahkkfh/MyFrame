@@ -2,6 +2,9 @@ package cn.mark.frame.system;
 
 import android.app.Application;
 
+import com.Lyp.bigimageview.bigImageView.BigImageViewer;
+import com.Lyp.bigimageview.bigImageView.view.BigImageView;
+import com.Lyp.bigimageview.fresco.FrescoImageLoader;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.stetho.Stetho;
 import com.liulishuo.filedownloader.FileDownloader;
@@ -24,7 +27,12 @@ public class FrameApplication extends Application {
         Stetho.initializeWithDefaults(this);
         Fresco.initialize(this);
         FileDownloader.init(getApplicationContext());
+//        initBigImageView();
     }
+
+//    private void initBigImageView() {
+//        BigImageViewer.initialize(FrescoImageLoader.with(this));
+//    }
 
     public static ApplicationHelper getApplicationHelper() {
         return applicationHelper;
