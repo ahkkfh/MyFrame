@@ -17,6 +17,7 @@ import java.util.List;
 import cn.mark.frame.R;
 import cn.mark.frame.base.BaseActivity;
 import cn.mark.frame.databinding.ActivityHomeBinding;
+import cn.mark.frame.ui.fragment.BigImageViewShowFragment;
 import cn.mark.frame.ui.fragment.CenterFragment;
 import cn.mark.frame.ui.fragment.HomeFragment;
 import cn.mark.frame.ui.fragment.LogingRegisFragment;
@@ -73,6 +74,7 @@ public class MainActivity extends BaseActivity {
         mFragments.add(new TwoFragment());
         mFragments.add(new LogingRegisFragment());
         mFragments.add(new CenterFragment());
+        mFragments.add(new BigImageViewShowFragment());
         mBinding.homeViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
