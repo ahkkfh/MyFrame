@@ -41,6 +41,13 @@ public class BigImageViewShowFragment extends BaseFragment {
             @Override
             public void call(Void aVoid) {
                 Log.i("lbxx", "fresco加载");
+                toIntent();
+            }
+        });
+        RxView.clicks(mBinding.glideLoader).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                Log.i("lbxx", "glide加载图片");
             }
         });
         RxView.clicks(mBinding.longIamge).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
@@ -55,5 +62,9 @@ public class BigImageViewShowFragment extends BaseFragment {
                 Log.i("lbxx", "mscaleType");
             }
         });
+    }
+
+    private void toIntent() {
+
     }
 }
