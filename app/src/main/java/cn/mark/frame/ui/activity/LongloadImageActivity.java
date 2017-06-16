@@ -29,6 +29,7 @@ public class LongloadImageActivity extends BaseActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_fresco_load);
+
         mBinding.frescoLoader.setVisibility(View.GONE);
         mBinding.bigImageView.setProgressIndicator(new ProgressPieIndicator());
         mBinding.bigImageView.showImage(Uri.parse("http://ww1.sinaimg.cn/mw690/005Fj2RDgw1f9mvl4pivvj30c82ougw3.jpg"));

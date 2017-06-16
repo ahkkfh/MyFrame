@@ -28,7 +28,6 @@ import rx.functions.Action1;
  */
 public class BigImageViewShowFragment extends BaseFragment {
     private ActivityShowBigImageBinding mBinding;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

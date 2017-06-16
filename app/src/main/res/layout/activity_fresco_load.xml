@@ -14,7 +14,8 @@
             android:id="@+id/fresco_loader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="load"/>
+            android:text="load"
+            android:visibility="gone"/>
 
         <longimage.bigImageView.view.BigImageView
             android:id="@+id/big_image_view"

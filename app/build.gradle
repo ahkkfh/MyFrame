@@ -51,6 +51,7 @@ android {
         exclude 'META-INF/RXJAVA.PROPERTIES'
         exclude 'META-INF/rxjava'
         exclude 'META-INF/RXJAVA'
+
     }
 }
 

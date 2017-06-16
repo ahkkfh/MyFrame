@@ -74,7 +74,7 @@ public class MainActivity extends BaseActivity {
         mFragments.add(new TwoFragment());
         mFragments.add(new LogingRegisFragment());
         mFragments.add(new CenterFragment());
-        mFragments.add(new BigImageViewShowFragment());
+        mFragments.add(new BigImageViewShowFragment());//添加新的Tab
         mBinding.homeViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

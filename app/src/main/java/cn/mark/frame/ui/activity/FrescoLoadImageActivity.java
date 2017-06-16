@@ -1,14 +1,14 @@
 package cn.mark.frame.ui.activity;
 
+import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.Button;
 
 import cn.mark.frame.R;
 import cn.mark.frame.base.BaseActivity;
-import longimage.bigImageView.view.BigImageView;
+import cn.mark.frame.databinding.ActivityFrescoLoadBinding;
 import longimage.progresspie.ProgressPieIndicator;
 
 /***
@@ -17,23 +17,22 @@ import longimage.progresspie.ProgressPieIndicator;
  * @date:2017-06-15 22:01
  */
 public class FrescoLoadImageActivity extends BaseActivity {
-    private Button mButton;
-    private BigImageView mBigImageView;
+    private ActivityFrescoLoadBinding mBinding;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fresco_load);
-        mButton = (Button) findViewById(R.id.fresco_loader);
-        mBigImageView = (BigImageView) findViewById(R.id.big_image_view);
-        mButton.setOnClickListener(new View.OnClickListener() {
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_fresco_load);
+
+        mBinding.bigImageView.setProgressIndicator(new ProgressPieIndicator());
+        mBinding.bigImageView.showImage(
+                Uri.parse("http://img3.imgtn.bdimg.com/it/u=3284462501,858280594&fm=21&gp=0.jpg"),
+                Uri.parse("http://a.hiphotos.baidu.com/zhidao/pic/item/adaf2edda3cc7cd90df3f2953f01213fb90e91a4.jpg")
+        );
+        mBinding.bigImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mBigImageView.setProgressIndicator(new ProgressPieIndicator());
-                mBigImageView.showImage(
-                        Uri.parse("http://img3.imgtn.bdimg.com/it/u=3284462501,858280594&fm=21&gp=0.jpg"),
-                        Uri.parse("http://a.hiphotos.baidu.com/zhidao/pic/item/adaf2edda3cc7cd90df3f2953f01213fb90e91a4.jpg")
-                );
+                finish();
             }
         });
 
