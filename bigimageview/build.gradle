@@ -27,6 +27,8 @@ dependencies {
     compile supportDependencies.progresspieview// progresspie
     compile 'com.github.filippudak.progresspieview:library:1.0.4'
     compile supportDependencies.glide// glide
+    compile supportDependencies.okhttp3_integration// glide
+    compile supportDependencies.okhttp3// glide
 
     compile supportDependencies.fresco// fresco
     compile supportDependencies.commons// fresco

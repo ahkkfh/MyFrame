@@ -1,14 +1,10 @@
-package com.Lyp.bigimageview.fresco;
+package longimage.fresco;
 
 import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.Lyp.bigimageview.R;
-import com.Lyp.bigimageview.bigImageView.loader.ImageLoader;
-import com.Lyp.bigimageview.bigImageView.view.BigImageView;
-import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 import com.facebook.binaryresource.FileBinaryResource;
 import com.facebook.cache.common.CacheKey;
 import com.facebook.cache.disk.FileCache;
@@ -17,19 +13,21 @@ import com.facebook.common.references.CloseableReference;
 import com.facebook.datasource.DataSource;
 import com.facebook.drawee.backends.pipeline.DraweeConfig;
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.drawable.CloneableDrawable;
 import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.cache.DefaultCacheKeyFactory;
 import com.facebook.imagepipeline.core.DefaultExecutorSupplier;
-import com.facebook.imagepipeline.core.FileCacheFactory;
 import com.facebook.imagepipeline.core.ImagePipeline;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.facebook.imagepipeline.core.ImagePipelineFactory;
 import com.facebook.imagepipeline.request.ImageRequest;
 
 import java.io.File;
+
+import longimage.R;
+import longimage.bigImageView.loader.ImageLoader;
+import longimage.bigImageView.view.BigImageView;
 
 /**
  * Created by Ruoly on 2017/6/11.

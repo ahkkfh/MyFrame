@@ -1,5 +1,6 @@
 package cn.mark.frame.ui;
 
+import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,6 +17,7 @@ import java.util.List;
 import cn.mark.frame.R;
 import cn.mark.frame.base.BaseActivity;
 import cn.mark.frame.databinding.ActivityHomeBinding;
+import cn.mark.frame.ui.fragment.BigImageViewShowFragment;
 import cn.mark.frame.ui.fragment.CenterFragment;
 import cn.mark.frame.ui.fragment.HomeFragment;
 import cn.mark.frame.ui.fragment.LogingRegisFragment;
@@ -30,12 +32,14 @@ import cn.mark.utils.StatusBarUtil;
 public class MainActivity extends BaseActivity {
     private ActivityHomeBinding mBinding;
     private List<Fragment> mFragments = new ArrayList<>();
-    private String[] arrays = new String[]{"Home", "Two", "Login&Regiest", "Center"};
+    private String[] arrays = new String[]{"Home", "Two", "Login&Regiest", "Center", "Big"};
+    private Activity mActivity;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
+        mActivity = this;
+        mBinding = DataBindingUtil.setContentView(mActivity, R.layout.activity_home);
         initView();
     }
 
@@ -47,6 +51,7 @@ public class MainActivity extends BaseActivity {
                 .addItem(new BottomNavigationItem(R.drawable.ic_gavel, arrays[1]))
                 .addItem(new BottomNavigationItem(R.drawable.ic_group_work, arrays[2]))
                 .addItem(new BottomNavigationItem(R.drawable.ic_avatar, arrays[3]))
+                .addItem(new BottomNavigationItem(R.drawable.ic_avatar, arrays[4]))
                 .initialise();
         mBinding.homeBottomBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
             @Override
@@ -69,6 +74,7 @@ public class MainActivity extends BaseActivity {
         mFragments.add(new TwoFragment());
         mFragments.add(new LogingRegisFragment());
         mFragments.add(new CenterFragment());
+        mFragments.add(new BigImageViewShowFragment());
         mBinding.homeViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

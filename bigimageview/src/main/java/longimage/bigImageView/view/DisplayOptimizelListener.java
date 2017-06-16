@@ -1,4 +1,4 @@
-package com.Lyp.bigimageview.bigImageView.view;
+package longimage.bigImageView.view;
 
 import android.graphics.PointF;
 

@@ -1,11 +1,6 @@
 apply plugin: 'com.android.application'
-apply plugin: 'im.fir.plugin.gradle'//导入fir，apk版本管理
 
-fir {
-    apiToken '595ecac3dca56cf9f59dbc5dc38fe796' //设置fir的key
 
-    changeLog "fir的集成测试"//设置更新日志
-}
 android {
     compileSdkVersion 25//编译sdk版本
     buildToolsVersion '25.0.0' //build tools 版本
@@ -22,21 +17,40 @@ android {
             //show log
             buildConfigField "boolean", "LOG_DEBUG", "true"
             minifyEnabled false //是否混淆代码
-            zipAlignEnabled false //是否zip优化
-            shrinkResources false //删除无用的资源
+//            shrinkResources false //删除无用的资源
         }
         release {
             //hide log
             buildConfigField "boolean", "LOG_DEBUG", "false"
             minifyEnabled false //是否混淆代码
-            zipAlignEnabled true //是否zip优化
-            shrinkResources true //删除无用的资源
+//            shrinkResources true //删除无用的资源
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            signingConfig signingConfigs.release //需要正式证书签名，才能发布到fir.im
         }
     }
     dataBinding {//dataBinding
         enabled true
+    }
+    applicationVariants.all {
+        variant ->
+            variant.outputs.each { output ->
+                //设置打包时，apk的名字
+//                output.outputFileName = new File(output.outputFile.parent,
+//                        "MyFrame-${variant.buildType.name}-${variant.versionName}.apk".toLowerCase())
+            }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/rxjava.properties'
+        exclude 'META-INF/rxjava.PROPERTIES'
+        exclude 'META-INF/RXJAVA.properties'
+        exclude 'META-INF/RXJAVA.PROPERTIES'
+        exclude 'META-INF/rxjava'
+        exclude 'META-INF/RXJAVA'
     }
 }
 
