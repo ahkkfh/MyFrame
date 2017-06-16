@@ -1,5 +1,6 @@
 package cn.mark.frame.ui.fragment;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,6 +16,8 @@ import java.util.concurrent.TimeUnit;
 import cn.mark.frame.R;
 import cn.mark.frame.base.BaseFragment;
 import cn.mark.frame.databinding.ActivityShowBigImageBinding;
+import cn.mark.frame.ui.activity.FrescoLoadImageActivity;
+import cn.mark.frame.ui.activity.LongloadImageActivity;
 import cn.mark.utils.Constant;
 import rx.functions.Action1;
 
@@ -40,19 +43,21 @@ public class BigImageViewShowFragment extends BaseFragment {
         RxView.clicks(mBinding.frescoLoader).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
+                startActivity(new Intent(getContext(), FrescoLoadImageActivity.class));
                 Log.i("lbxx", "fresco加载");
-                toIntent();
             }
         });
         RxView.clicks(mBinding.glideLoader).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
+//                startActivity(new Intent(getContext(), GlideLoadImageActivity.class));
                 Log.i("lbxx", "glide加载图片");
             }
         });
         RxView.clicks(mBinding.longIamge).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
+                startActivity(new Intent(getContext(),LongloadImageActivity.class));
                 Log.i("lbxx", "long图加载");
             }
         });
@@ -62,9 +67,5 @@ public class BigImageViewShowFragment extends BaseFragment {
                 Log.i("lbxx", "mscaleType");
             }
         });
-    }
-
-    private void toIntent() {
-
     }
 }

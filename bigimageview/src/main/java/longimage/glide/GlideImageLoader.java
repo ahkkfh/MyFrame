@@ -1,4 +1,4 @@
-package com.Lyp.bigimageview.glide;
+package longimage.glide;
 
 import android.content.Context;
 import android.net.Uri;
@@ -6,9 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.Lyp.bigimageview.R;
-import com.Lyp.bigimageview.bigImageView.loader.ImageLoader;
-import com.Lyp.bigimageview.bigImageView.view.BigImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -16,6 +13,9 @@ import com.bumptech.glide.request.target.SimpleTarget;
 
 import java.io.File;
 
+import longimage.R;
+import longimage.bigImageView.loader.ImageLoader;
+import longimage.bigImageView.view.BigImageView;
 import okhttp3.OkHttpClient;
 
 

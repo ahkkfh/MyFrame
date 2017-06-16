@@ -1,15 +1,16 @@
-package com.Lyp.bigimageview.progresspie;
+package longimage.progresspie;
 
 
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.Lyp.bigimageview.R;
-import com.Lyp.bigimageview.bigImageView.BigImageViewer;
-import com.Lyp.bigimageview.bigImageView.indicator.ProgressIndicator;
-import com.Lyp.bigimageview.bigImageView.view.BigImageView;
 import com.filippudak.ProgressPieView.ProgressPieView;
+
 import java.util.Locale;
+
+import longimage.R;
+import longimage.bigImageView.indicator.ProgressIndicator;
+import longimage.bigImageView.view.BigImageView;
 
 /**
  * Created by Ruoly on 2017/6/11.

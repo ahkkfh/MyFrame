@@ -1,4 +1,4 @@
-package com.Lyp.bigimageview.glide;
+package longimage.glide;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.integration.okhttp3.OkHttpUrlLoader;

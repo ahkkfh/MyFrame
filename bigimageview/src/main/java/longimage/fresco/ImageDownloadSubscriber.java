@@ -1,4 +1,4 @@
-package com.Lyp.bigimageview.fresco;
+package longimage.fresco;
 
 import android.content.Context;
 import android.support.annotation.WorkerThread;

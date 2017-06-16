@@ -1,4 +1,4 @@
-package com.Lyp.bigimageview.glide;
+package longimage.glide;
 
 import android.graphics.drawable.Drawable;
 

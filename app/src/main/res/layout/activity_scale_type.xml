@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data/>
+
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        >
+
+        <longimage.bigImageView.view.BigImageView
+            android:id="@+id/mBigImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:initScaleType="centerInside"
+            />
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/mScaleType"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/white"
+            android:entries="@array/init_scale_type"
+            />
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/mImageSize"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="80dp"
+            android:background="@android:color/white"
+            android:entries="@array/image_size"
+            />
+
+        <Button
+            android:id="@+id/mBtnLoad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:text="load"
+            />
+    </FrameLayout>
+</layout>

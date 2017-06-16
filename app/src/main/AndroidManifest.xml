@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cn.mark.frame">
+          package="cn.mark.frame">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <!-- 用于读取手机当前的状态 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <!-- 写入扩展存储，向扩展卡写入数据，用于写入缓存定位数据 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <!-- 以下是使用wifi访问网络所需的权限 -->
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
     <!-- 相机权限 -->
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
     <!-- 指纹识别 -->
-    <uses-permission android:name="com.fingerprints.service.ACCESS_FINGERPRINT_MANAGER" />
-    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+    <uses-permission android:name="com.fingerprints.service.ACCESS_FINGERPRINT_MANAGER"/>
+    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
 
     <application
         android:name=".system.FrameApplication"
@@ -30,9 +30,9 @@
             android:label="@string/title_activity_guide_pages"
             android:theme="@style/NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity android:name=".ui.MainActivity">
@@ -53,95 +53,101 @@
         <!-- <activity android:name=".ui.RegiestActivity" /> -->
         <activity
             android:name=".ui.activity.PhotoViewActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.VideoViewPlayActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.ColorStatusBarActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.ImageStatusBarActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.SwipeBackActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.UseInFragmentActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.ImageViewActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.ApiActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.AutoTinyActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.ListViewActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.PlayDirectlyActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.WebViewActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.OrientationActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.UISmallChangeActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.AutoTinyListActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.AutoTinyNormalActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.ListViewMultiHolderActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.ListViewNormalActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.ListViewViewpagerActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.RecyclerViewNormalActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.StatusBarActivty"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.FingerprintActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name="cn.mark.utils.zxing.CaptureActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.ChartActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.TopTabActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.SlidingTabActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.CommonTabActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".ui.activity.SegmentTabActivity"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"/>
+        <activity
+            android:name=".ui.activity.FrescoLoadImageActivity"
+            android:theme="@style/NoActionBar"/>
+        <activity
+            android:name=".ui.activity.LongloadImageActivity"
+            android:theme="@style/NoActionBar"/>
 
         <meta-data
             android:name="design_width"
-            android:value="720" />
+            android:value="720"/>
         <meta-data
             android:name="design_height"
-            android:value="1280" />
+            android:value="1280"/>
 
 
     </application>
