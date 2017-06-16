@@ -1,42 +1,20 @@
-/*
- * The MIT License (MIT)
- *
- * Copyright (c) 2016 Piasy
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
-
 package longimage.bigImageView.view;
 
 import android.graphics.PointF;
+
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 
-/**
- * credit: https://github.com/Piasy/BigImageViewer/issues/2
+/***
+ * @author marks.luo
+ * @Description: TODO(显示优化监听)
+ * @date:2017-06-14 11:55
  */
-
 public class DisplayOptimizeListener implements SubsamplingScaleImageView.OnImageEventListener {
-    private static final int LONG_IMAGE_SIZE_RATIO = 2;
+    private static final int LONG_IMAGE_SIZE_RATIO = 2;//宽高比
 
-    private final SubsamplingScaleImageView mImageView;
+    private final SubsamplingScaleImageView mImageView;//长图加载view
 
-    private int mInitScaleType;
+    private int mInitScaleType;//加载状态
 
     public DisplayOptimizeListener(SubsamplingScaleImageView imageView) {
         mImageView = imageView;
@@ -66,8 +44,7 @@ public class DisplayOptimizeListener implements SubsamplingScaleImageView.OnImag
 
         if (!hasZeroValue && (float) imageHeight / imageWidth > LONG_IMAGE_SIZE_RATIO) {
             // scale at top
-            mImageView
-                    .animateScaleAndCenter(result, new PointF(imageWidth / 2, 0))
+            mImageView.animateScaleAndCenter(result, new PointF(imageWidth / 2, 0))
                     .withEasing(SubsamplingScaleImageView.EASE_OUT_QUAD)
                     .start();
         }
@@ -78,27 +55,23 @@ public class DisplayOptimizeListener implements SubsamplingScaleImageView.OnImag
         }
 
         if (mInitScaleType == BigImageView.INIT_SCALE_TYPE_AUTO) {
-            float maxScale = Math.max((float) viewWidth / imageWidth,
-                    (float) viewHeight / imageHeight);
+            float maxScale = Math.max((float) viewWidth / imageWidth, (float) viewHeight / imageHeight);
             if (maxScale > 1) {
-                // image is smaller than screen, it should be zoomed out to its origin size
+                // 图像小于屏幕，应缩小到原尺寸
                 mImageView.setMinScale(1);
-
-                // and it should be zoomed in to fill the screen
+                // 且应放大到以填充屏幕
                 float defaultMaxScale = mImageView.getMaxScale();
                 mImageView.setMaxScale(Math.max(defaultMaxScale, maxScale * 1.2F));
             } else {
-                // image is bigger than screen, it should be zoomed out to fit the screen
-                float minScale = Math.min((float) viewWidth / imageWidth,
-                        (float) viewHeight / imageHeight);
+                //图像大于屏幕应该缩小到以适应屏幕
+                float minScale = Math.min((float) viewWidth / imageWidth, (float) viewHeight / imageHeight);
                 mImageView.setMinScale(minScale);
-                // but no need to set max scale
+                //不需要设置最大刻度
             }
-            // scale to fit screen, and center
+            // 尺寸适合屏幕和中心
             mImageView.setScaleAndCenter(maxScale, new PointF(imageWidth / 2, imageHeight / 2));
         }
-
-        mImageView.setDoubleTapZoomScale(result);
+        mImageView.setDoubleTapZoomScale(result);//设置双击设置
     }
 
     @Override

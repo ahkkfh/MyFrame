@@ -20,7 +20,6 @@ import okhttp3.OkHttpClient;
 
 
 /**
- * Created by Ruoly on 2017/6/11.
  * 使用Gidle加载图片
  */
 public class GlideImageLoader implements ImageLoader {

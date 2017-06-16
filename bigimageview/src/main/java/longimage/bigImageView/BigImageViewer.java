@@ -29,8 +29,8 @@ import android.net.Uri;
 import longimage.bigImageView.loader.ImageLoader;
 
 /**
- * Created by Piasy{github.com/Piasy} on 06/11/2016.
- *
+ * @author mark.luo
+ * @Date 2017-06-10 10:20
  * This is not a singleton, you can initialize it multiple times, but before you initialize it
  * again, it will use the same {@link ImageLoader} globally.
  */

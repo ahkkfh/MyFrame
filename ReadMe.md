@@ -16,7 +16,8 @@
         解释该项目的作用，分层等
 ####1.0.2
         加入JCVideoPlay和二维码扫描
-
+###1.0.3
+        add  BigImageView show
 ##联系方式
     Email:markruo92@gmail.com  
 

@@ -29,13 +29,14 @@ import android.view.View;
 import longimage.bigImageView.view.BigImageView;
 
 /**
- * Created by Piasy{github.com/Piasy} on 12/11/2016.
+ * @author mark.luo
+ * @Date 2017-06-06 13:36
+ * 图片加载进度监听
  */
-
 public interface ProgressIndicator {
     /**
      * DO NOT add indicator view into parent! Only called once per load.
-     * */
+     */
     View getView(BigImageView parent);
 
     void onStart();

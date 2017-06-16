@@ -1,27 +1,3 @@
-/*
- * The MIT License (MIT)
- *
- * Copyright (c) 2016 Piasy
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
-
 package longimage.bigImageView.view;
 
 import android.Manifest;
@@ -55,13 +31,13 @@ import longimage.bigImageView.BigImageViewer;
 import longimage.bigImageView.indicator.ProgressIndicator;
 import longimage.bigImageView.loader.ImageLoader;
 
-/**
- * Created by Piasy{github.com/Piasy} on 06/11/2016.
- *
- * Use FrameLayout for extensibility.
+/***
+ * @author marks.luo
+ * @Description: (使用FrameLayout进行扩展)
+ * @date:2017-06-14 11:55
  */
-
 public class BigImageView extends FrameLayout implements ImageLoader.Callback {
+    //初始化图片加载状态
     public static final int INIT_SCALE_TYPE_CENTER_INSIDE = 1;
     public static final int INIT_SCALE_TYPE_CENTER_CROP = 2;
     public static final int INIT_SCALE_TYPE_AUTO = 3;
@@ -79,8 +55,7 @@ public class BigImageView extends FrameLayout implements ImageLoader.Callback {
     private Uri mThumbnail;
 
     private ProgressIndicator mProgressIndicator;
-    private final ProgressNotifyRunnable mProgressNotifyRunnable
-            = new ProgressNotifyRunnable() {
+    private final ProgressNotifyRunnable mProgressNotifyRunnable = new ProgressNotifyRunnable() {
         @Override
         public void run() {
             if (mProgressIndicator != null) {
@@ -103,16 +78,13 @@ public class BigImageView extends FrameLayout implements ImageLoader.Callback {
     public BigImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        TypedArray array = context.getTheme()
-                .obtainStyledAttributes(attrs, R.styleable.BigImageView, defStyleAttr, 0);
-        mInitScaleType = array.getInteger(R.styleable.BigImageView_initScaleType,
-                INIT_SCALE_TYPE_CENTER_INSIDE);
+        TypedArray array = context.getTheme().obtainStyledAttributes(attrs, R.styleable.BigImageView, defStyleAttr, 0);
+        mInitScaleType = array.getInteger(R.styleable.BigImageView_initScaleType, INIT_SCALE_TYPE_CENTER_INSIDE);
         array.recycle();
 
         mImageView = new SubsamplingScaleImageView(context, attrs);
         addView(mImageView);
-        LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
+        LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         mImageView.setLayoutParams(params);
         mImageView.setMinimumTileDpi(160);
 
@@ -127,12 +99,12 @@ public class BigImageView extends FrameLayout implements ImageLoader.Callback {
     }
 
     @Override
-    public void setOnClickListener(OnClickListener listener) {
+    public void setOnClickListener(OnClickListener listener) {//set view click listener
         mImageView.setOnClickListener(listener);
     }
 
     @Override
-    public void setOnLongClickListener(OnLongClickListener listener) {
+    public void setOnLongClickListener(OnLongClickListener listener) {//set view Long click listener
         mImageView.setOnLongClickListener(listener);
     }
 
@@ -150,7 +122,7 @@ public class BigImageView extends FrameLayout implements ImageLoader.Callback {
                 mImageView.setMinimumScaleType(SubsamplingScaleImageView.SCALE_TYPE_CENTER_INSIDE);
                 break;
         }
-        mDisplayOptimizeListener.setInitScaleType(initScaleType);
+        mDisplayOptimizeListener.setInitScaleType(initScaleType);//设置图片优化体验
     }
 
     public void setImageSaveCallback(ImageSaveCallback imageSaveCallback) {
@@ -195,7 +167,7 @@ public class BigImageView extends FrameLayout implements ImageLoader.Callback {
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-
+        //clear mTempImages
         for (int i = 0, size = mTempImages.size(); i < size; i++) {
             mTempImages.get(i).delete();
         }
@@ -205,7 +177,7 @@ public class BigImageView extends FrameLayout implements ImageLoader.Callback {
     public void showImage(Uri uri) {
         Log.d("BigImageView", "showImage " + uri);
 
-        mThumbnail = Uri.EMPTY;
+        mThumbnail = Uri.EMPTY;//set  thumbnail is null
         mImageLoader.loadImage(uri, this);
     }
 
@@ -248,8 +220,7 @@ public class BigImageView extends FrameLayout implements ImageLoader.Callback {
             public void run() {
                 // why show thumbnail in onStart? because we may not need download it from internet
                 if (mThumbnail != Uri.EMPTY) {
-                    mThumbnailView = mImageLoader.showThumbnail(BigImageView.this, mThumbnail,
-                            mInitScaleType);
+                    mThumbnailView = mImageLoader.showThumbnail(BigImageView.this, mThumbnail, mInitScaleType);
                     addView(mThumbnailView);
                 }
 
@@ -318,6 +289,6 @@ public class BigImageView extends FrameLayout implements ImageLoader.Callback {
 
     @UiThread
     private void doShowImage(File image) {
-        mImageView.setImage(ImageSource.uri(Uri.fromFile(image)));
+        mImageView.setImage(ImageSource.uri(Uri.fromFile(image)));//set imageview  show
     }
 }

@@ -30,7 +30,6 @@ import longimage.bigImageView.loader.ImageLoader;
 import longimage.bigImageView.view.BigImageView;
 
 /**
- * Created by Ruoly on 2017/6/11.
  * 使用Fresco加载图片
  */
 public class FrescoImageLoader implements ImageLoader {
@@ -39,7 +38,6 @@ public class FrescoImageLoader implements ImageLoader {
 
     private FrescoImageLoader(Context context) {
         mAppContext = context;
-
         mExecutorSupplier = new DefaultExecutorSupplier(Runtime.getRuntime().availableProcessors());
     }
 
@@ -91,8 +89,7 @@ public class FrescoImageLoader implements ImageLoader {
 
     @Override
     public View showThumbnail(BigImageView parent, Uri thumbnail, int scaleType) {
-        SimpleDraweeView draweeView = (SimpleDraweeView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.ui_fresco_thumbnail, parent, false);
+        SimpleDraweeView draweeView = (SimpleDraweeView) LayoutInflater.from(parent.getContext()).inflate(R.layout.ui_fresco_thumbnail, parent, false);
         DraweeController controller = (DraweeController) Fresco.newDraweeControllerBuilder()
                 .setUri(thumbnail)
                 .build();

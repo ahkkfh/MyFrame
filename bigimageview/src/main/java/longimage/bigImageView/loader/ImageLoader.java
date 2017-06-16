@@ -34,15 +34,18 @@ import java.io.File;
 import longimage.bigImageView.view.BigImageView;
 
 /**
- * Created by Piasy{github.com/Piasy} on 08/11/2016.
+ * @author mark.luo
+ * @Date 2017-06-06 14:20
+ * 图片加载监听
  */
-
 public interface ImageLoader {
 
     void loadImage(Uri uri, Callback callback);
 
+    //设置缩略图
     View showThumbnail(BigImageView parent, Uri thumbnail, int scaleType);
 
+    //预览
     void prefetch(Uri uri);
 
     interface Callback {

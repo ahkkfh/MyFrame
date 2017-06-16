@@ -12,10 +12,11 @@ import longimage.R;
 import longimage.bigImageView.indicator.ProgressIndicator;
 import longimage.bigImageView.view.BigImageView;
 
-/**
- * Created by Ruoly on 2017/6/11.
+/***
+ * @author marks.luo
+ * @Description: TODO(自定义 progress)
+ * @date:2017-06-14 11:56
  */
-
 public class ProgressPieIndicator implements ProgressIndicator {
     private ProgressPieView mProgressPieView;
 

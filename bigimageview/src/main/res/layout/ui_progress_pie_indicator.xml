@@ -8,6 +8,7 @@
     android:textSize="18sp"
     app:ppvBackgroundColor="@android:color/transparent"
     app:ppvProgress="0"
+
     app:ppvProgressColor="#80FFFFFF"
     app:ppvProgressFillType="radial"
     app:ppvStrokeColor="#80FFFFFF"

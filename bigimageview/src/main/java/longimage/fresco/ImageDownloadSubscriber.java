@@ -14,11 +14,11 @@ import org.apache.commons.io.IOUtils;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-/**
- * Created by Ruoly on 2017/6/11.
+/***
+ * @author marks.luo
+ * @Description: TODO()
+ * @date:2017-06-15 11:56
  */
-
 public abstract class ImageDownloadSubscriber extends BaseDataSubscriber<CloseableReference<PooledByteBuffer>> {
     private final File mTempFile;
 
