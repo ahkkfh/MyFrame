@@ -2,15 +2,16 @@ apply plugin: 'com.android.application'
 
 
 android {
-    compileSdkVersion 25//编译sdk版本
-    buildToolsVersion '25.0.0' //build tools 版本
+    compileSdkVersion 26//编译sdk版本
+    buildToolsVersion '26.0.0' //build tools 版本
     defaultConfig {
         applicationId "cn.mark.frame" //应用包名
         minSdkVersion 15 //最低支持版本
-        targetSdkVersion 25 //目标sdk版本
+        targetSdkVersion 26 //目标sdk版本
         versionCode 1  //版本号
         versionName "1.0.0"//版本名
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true//进行分包
     }
     buildTypes {
         debug {

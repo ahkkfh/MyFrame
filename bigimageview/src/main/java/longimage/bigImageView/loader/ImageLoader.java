@@ -41,9 +41,13 @@ public interface ImageLoader {
 
     void loadImage(Uri uri, Callback callback);
 
+    void loadImage(Uri uri, String filePath, Callback callback);
+
     View showThumbnail(BigImageView parent, Uri thumbnail, int scaleType);
 
     void prefetch(Uri uri);
+
+    void prefetch(Uri uri, Callback callback);
 
     interface Callback {
         @UiThread
@@ -52,11 +56,16 @@ public interface ImageLoader {
         @WorkerThread
         void onCacheMiss(File image);
 
+        void onSuccess(File image);
+
         @WorkerThread
         void onStart();
 
         @WorkerThread
         void onProgress(int progress);
+
+        @WorkerThread
+        void onFail(Throwable e);
 
         @WorkerThread
         void onFinish();

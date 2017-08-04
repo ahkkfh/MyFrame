@@ -42,9 +42,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.widget.FrameLayout;
 
-import com.davemorrissey.labs.subscaleview.ImageSource;
-import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -54,6 +51,8 @@ import longimage.R;
 import longimage.bigImageView.BigImageViewer;
 import longimage.bigImageView.indicator.ProgressIndicator;
 import longimage.bigImageView.loader.ImageLoader;
+import longimage.subsampling.ImageSource;
+import longimage.subsampling.SubsamplingScaleImageView;
 
 /**
  * Created by Piasy{github.com/Piasy} on 06/11/2016.
@@ -240,6 +239,11 @@ public class BigImageView extends FrameLayout implements ImageLoader.Callback {
         });
     }
 
+    @Override
+    public void onSuccess(File image) {
+
+    }
+
     @WorkerThread
     @Override
     public void onStart() {
@@ -268,6 +272,11 @@ public class BigImageView extends FrameLayout implements ImageLoader.Callback {
         if (mProgressIndicator != null && mProgressNotifyRunnable.update(progress)) {
             post(mProgressNotifyRunnable);
         }
+    }
+
+    @Override
+    public void onFail(Throwable e) {
+
     }
 
     @WorkerThread

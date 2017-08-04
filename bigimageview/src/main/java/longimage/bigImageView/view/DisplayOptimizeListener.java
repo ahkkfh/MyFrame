@@ -25,7 +25,8 @@
 package longimage.bigImageView.view;
 
 import android.graphics.PointF;
-import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
+
+import longimage.subsampling.SubsamplingScaleImageView;
 
 /**
  * credit: https://github.com/Piasy/BigImageViewer/issues/2

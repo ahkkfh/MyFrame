@@ -28,6 +28,10 @@ public abstract class ImageDownloadSubscriber extends BaseDataSubscriber<Closeab
         mTempFile = new File(context.getCacheDir(), "" + System.currentTimeMillis() + ".png");
     }
 
+    public ImageDownloadSubscriber(String fildPath) {
+        mTempFile = new File(fildPath);
+    }
+
     @Override
     public void onProgressUpdate(DataSource<CloseableReference<PooledByteBuffer>> dataSource) {
         if (!mFinished) {
