@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="cn.mark.utils">
+          package="cn.mark.utils"
+          android:versionCode="1">
     <!--utils androidMainfest.xml-->
     <application
         android:allowBackup="true"

@@ -24,6 +24,8 @@ import rx.functions.Action1;
  */
 public class LongloadImageActivity extends BaseActivity {
     private ActivityFrescoLoadBinding mBinding;
+    private String path = "http://opposns-test.oss-cn-shenzhen.aliyuncs.com/uploads/thread/attachment/2017/06/19/14978402659688.jpg_app.big.4g.thread.list.webp";
+    private String temp = "http://ww1.sinaimg.cn/mw690/005Fj2RDgw1f9mvl4pivvj30c82ougw3.jpg";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ public class LongloadImageActivity extends BaseActivity {
 
         mBinding.frescoLoader.setVisibility(View.GONE);
         mBinding.bigImageView.setProgressIndicator(new ProgressPieIndicator());
-        mBinding.bigImageView.showImage(Uri.parse("http://ww1.sinaimg.cn/mw690/005Fj2RDgw1f9mvl4pivvj30c82ougw3.jpg"));
+        mBinding.bigImageView.showImage(Uri.parse(path));
         RxView.clicks(mBinding.bigImageView).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {//图片点击事件
