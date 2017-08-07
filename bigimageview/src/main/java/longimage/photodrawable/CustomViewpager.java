@@ -1,5 +1,9 @@
 package longimage.photodrawable;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -37,6 +41,8 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+
+import longimage.ViewHelper;
 
 /***
  * @author marks.luo
@@ -134,6 +140,7 @@ public class CustomViewpager extends ViewGroup {
     private static final float DURATION_SCALE = 1.0F;
     private PagerMenuDelegate mMenuDelegate = new PagerMenuDelegate(this);
     private boolean mDisableTouch = false;
+    private int validYSliding = (int) (AppConfig.PhoneInfo.screenheight * 0.15);
 
     /**
      * 最小可切换Page的偏移量
@@ -1420,7 +1427,8 @@ public class CustomViewpager extends ViewGroup {
                     }
 
                     this.mVelocityTracker.addMovement(ev);
-                    return this.mIsBeingDragged;
+//                    return this.mIsBeingDragged;
+                    return mOnTouchSlopListener == null ? mIsBeingDragged : this.mIsUnableToDrag;
                 } else {
                     this.mIsBeingDragged = false;
                     this.mIsUnableToDrag = false;
@@ -1486,8 +1494,44 @@ public class CustomViewpager extends ViewGroup {
                         this.mRightEdge.onRelease();
                         needsInvalidate = !this.mLeftEdge.isFinished() || !this.mRightEdge.isFinished();
                     }
+                    if (mOnTouchSlopListener != null) {
+                        View view = getCutrrentChildView();
+                        if (view != null && view.getTranslationY() != 0) {
+                            if (Math.abs(view.getTranslationY()) < validYSliding) {
+                                AnimatorSet set = new AnimatorSet();
+                                set.playTogether(
+                                        ObjectAnimator.ofFloat(view, "translationY", view.getTranslationY(), 0)
+                                );
+                                set.setDuration(150).start();
+                                mOnTouchSlopListener.onTouch(0);
+                            } else {
+                                AnimatorSet set = new AnimatorSet();
+                                set.playTogether(
+                                        ObjectAnimator.ofFloat(view, "translationY", view.getTranslationY(), view.getTranslationY() > 0 ? AppConfig.PhoneInfo.screenheight : -AppConfig.PhoneInfo.screenheight)
+                                );
+                                set.setDuration(300)
+                                        .addListener(new AnimatorListenerAdapter() {
+                                            @Override
+                                            public void onAnimationEnd(Animator animation) {
+                                                mOnTouchSlopListener.onSlopExit();
+                                            }
+                                        });
+                                set.start();
+                            }
+                        }
+                    }
                     break;
                 case MotionEvent.ACTION_MOVE:
+                    float translationY = 0;
+                    if (this.mIsUnableToDrag && mOnTouchSlopListener != null) {
+                        View view = getCutrrentChildView();
+                        if (view != null) {
+                            float yDiff = ev.getY() - this.mInitialMotionY;
+                            ViewHelper.setTranslationY(view, yDiff);
+                            translationY = view.getTranslationY();
+                            mOnTouchSlopListener.onTouch(Math.abs(yDiff));
+                        }
+                    }
                     if (!this.mIsBeingDragged) {
                         index = ev.findPointerIndex(this.mActivePointerId);
                         x = ev.getX(index);
@@ -1545,6 +1589,19 @@ public class CustomViewpager extends ViewGroup {
         } else {
             return false;
         }
+    }
+
+    private View getCutrrentChildView() {
+        int var19;
+        for (var19 = 0; var19 < this.mItems.size(); ++var19) {
+            CustomViewpager.ItemInfo childCount = this.mItems.get(var19);
+            if (childCount.position >= this.mCurItem) {
+                if (childCount.position == this.mCurItem) {
+                    return (View) childCount.object;
+                }
+            }
+        }
+        return null;
     }
 
     private void requestParentDisallowInterceptTouchEvent(boolean disallowIntercept) {

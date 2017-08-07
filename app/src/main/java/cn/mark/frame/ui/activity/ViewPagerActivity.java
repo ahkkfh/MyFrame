@@ -10,7 +10,6 @@ import cn.mark.frame.R;
 import cn.mark.frame.base.BaseActivity;
 import cn.mark.frame.databinding.ActivityListviewVpBinding;
 import cn.mark.frame.ui.adapter.ViewPageAdapter;
-import longimage.photodrawable.AppConfig;
 import longimage.photodrawable.CustomViewpager;
 
 /***
@@ -113,16 +112,16 @@ public class ViewPagerActivity extends BaseActivity {
 
             }
         });
-        mBinding.vpListView.setOnTouchSlopListener(new CustomViewpager.OnTouchSlopListener() {
-            @Override
-            public void onTouch(float diff) {
-                mBinding.getRoot().getBackground().mutate().setAlpha((int) (255 * (1 - diff / (AppConfig.PhoneInfo.screenheight * 0.5f))));//设置整个布局
-            }
-
-            @Override
-            public void onSlopExit() {
-                finish();
-            }
-        });
+//        mBinding.vpListView.setOnTouchSlopListener(new CustomViewpager.OnTouchSlopListener() {
+//            @Override
+//            public void onTouch(float diff) {
+//                mBinding.getRoot().getBackground().mutate().setAlpha((int) (255 * (1 - diff / (AppConfig.PhoneInfo.screenheight * 0.5f))));//设置整个布局
+//            }
+//
+//            @Override
+//            public void onSlopExit() {
+//                finish();
+//            }
+//        });
     }
 }
