@@ -2,7 +2,7 @@ package longimage.bigImageView.view;
 
 import android.graphics.PointF;
 
-import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
+import longimage.subsampling.SubsamplingScaleImageView;
 
 /***
  * @author marks.luo

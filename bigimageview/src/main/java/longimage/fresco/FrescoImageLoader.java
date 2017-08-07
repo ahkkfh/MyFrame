@@ -88,6 +88,11 @@ public class FrescoImageLoader implements ImageLoader {
     }
 
     @Override
+    public void loadImage(Uri uri, String filePath, Callback callback) {
+
+    }
+
+    @Override
     public View showThumbnail(BigImageView parent, Uri thumbnail, int scaleType) {
         SimpleDraweeView draweeView = (SimpleDraweeView) LayoutInflater.from(parent.getContext()).inflate(R.layout.ui_fresco_thumbnail, parent, false);
         DraweeController controller = (DraweeController) Fresco.newDraweeControllerBuilder()
@@ -110,6 +115,11 @@ public class FrescoImageLoader implements ImageLoader {
     public void prefetch(Uri uri) {
         ImagePipeline pipeline = Fresco.getImagePipeline();
         pipeline.prefetchToDiskCache(ImageRequest.fromUri(uri), false);// we don't need context, but avoid null
+    }
+
+    @Override
+    public void prefetch(Uri uri, Callback callback) {
+
     }
 
     private File getCacheFile(ImageRequest request) {

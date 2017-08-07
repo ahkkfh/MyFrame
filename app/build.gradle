@@ -11,6 +11,7 @@ android {
         versionCode 1  //版本号
         versionName "1.0.0"//版本名
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true//进行分包
     }
     buildTypes {
         debug {

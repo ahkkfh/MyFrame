@@ -65,6 +65,11 @@ public class GlideImageLoader implements ImageLoader {
     }
 
     @Override
+    public void loadImage(Uri uri, String filePath, Callback callback) {
+
+    }
+
+    @Override
     public View showThumbnail(BigImageView parent, Uri thumbnail, int scaleType) {
         ImageView thumbnailView = (ImageView) LayoutInflater.from(parent.getContext()).inflate(R.layout.ui_glide_thumbnail, parent, Boolean.FALSE);
         switch (scaleType) {
@@ -91,5 +96,10 @@ public class GlideImageLoader implements ImageLoader {
                         // not interested in result
                     }
                 });
+    }
+
+    @Override
+    public void prefetch(Uri uri, Callback callback) {
+
     }
 }

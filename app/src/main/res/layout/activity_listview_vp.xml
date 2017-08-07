@@ -9,9 +9,18 @@
                     android:background="@color/white"
                     android:orientation="vertical">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/list_view_viewpager"
+        <longimage.photodrawable.CustomViewpager
+            android:id="@+id/vp_listView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/vp_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
     </RelativeLayout>
 </layout>

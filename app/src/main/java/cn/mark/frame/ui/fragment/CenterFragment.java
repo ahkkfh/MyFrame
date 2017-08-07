@@ -18,6 +18,7 @@ import cn.mark.frame.databinding.FragmentCenterBinding;
 import cn.mark.frame.ui.activity.ChartActivity;
 import cn.mark.frame.ui.activity.StatusBarActivty;
 import cn.mark.frame.ui.activity.TopTabActivity;
+import cn.mark.frame.ui.activity.ViewPagerActivity;
 import cn.mark.utils.Constant;
 import rx.functions.Action1;
 
@@ -56,6 +57,12 @@ public class CenterFragment extends BaseFragment {
             @Override
             public void call(Void aVoid) {
                 startActivity(new Intent(getActivity(), TopTabActivity.class));
+            }
+        });
+        RxView.clicks(mBinding.bigImageView).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                startActivity(new Intent(getActivity(), ViewPagerActivity.class));
             }
         });
     }
