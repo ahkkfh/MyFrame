@@ -18,6 +18,9 @@
         加入JCVideoPlay和二维码扫描
 ###1.0.3
         add  BigImageView show
+###1.0.4
+        add  LoadingDraweeview
+         包含了PhotoDraweeView和SubsamplingScaleImageView,用于分别展示长图和普通图片
 ##联系方式
     Email:markruo92@gmail.com  
 
