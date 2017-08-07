@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,16 +42,17 @@ public class LoadingDraweeview extends FrameLayout {
     private ProgressBar mProgressBar;
     private ImageView mImageView;
     private Context mContext;
-    private Uri mUri;
-    private Uri currentUri;
     private OnClickListener mOnClickListener;
     private FrescoImageLoader mImageLoader = new FrescoImageLoader();
+    private int screenWidth;
+    private int screenheight;
 
     public LoadingDraweeview(@NonNull Context context, String url) {
         super(context);
         mContext = context;
+        getDisplayMetrics();
         if (url.startsWith("http")) {
-            downloadImage(Uri.parse(url), false);
+            downloadImage(Uri.parse(url), true);
         } else {//显示本地图片
             File file = new File(url);
             checkImageFile(file, Uri.fromFile(file));
@@ -57,7 +60,6 @@ public class LoadingDraweeview extends FrameLayout {
     }
 
     private void downloadImage(final Uri uri, boolean needShowLoadingView) {
-        this.mUri = uri;
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         layoutParams.gravity = Gravity.CENTER;
         if (mScaleImageView == null && mDraweeView == null) {
@@ -82,7 +84,6 @@ public class LoadingDraweeview extends FrameLayout {
 
             @Override
             public void onSuccess(final File image) {
-                currentUri = uri;
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
@@ -129,6 +130,7 @@ public class LoadingDraweeview extends FrameLayout {
             options.inJustDecodeBounds = true;//确保图片不加载到内存
             BitmapFactory.decodeFile(file.getAbsolutePath(), options);
             String type = options.outMimeType;
+            Log.i("lbxx", "是否为长图===" + isLongImage(options.outWidth, options.outHeight));
             if (isLongImage(options.outWidth, options.outHeight) && !"image/gif".equals(type)) {
                 showLongImage(file.getAbsolutePath());
             } else {
@@ -137,11 +139,10 @@ public class LoadingDraweeview extends FrameLayout {
         }
     }
 
-    private void showImage(Uri uri, boolean forceFillWidth) {
+    private void showImage(Uri uri, final boolean forceFillWidth) {
         if (mDraweeView == null) {
             mDraweeView = new PhotoDraweeView(mContext);
-            addView(mDraweeView, ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
+            addView(mDraweeView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             mDraweeView.setOnViewTapListener(new OnViewTapListener() {
                 @Override
                 public void onViewTap(View view, float x, float y) {
@@ -159,7 +160,15 @@ public class LoadingDraweeview extends FrameLayout {
                     @Override
                     public void onFinalImageSet(String id, ImageInfo imageInfo, Animatable animatable) {
                         super.onFinalImageSet(id, imageInfo, animatable);
-
+                        if (imageInfo == null) {
+                            return;
+                        }
+                        if (forceFillWidth && imageInfo.getWidth() < imageInfo.getHeight()) {
+                            mDraweeView.fillWidth(imageInfo.getWidth(), imageInfo.getHeight());
+                        } else {
+                            mDraweeView.update(imageInfo.getWidth(), imageInfo.getHeight());
+                            mDraweeView.setGestureEnable(true);
+                        }
                     }
 
                     @Override
@@ -187,13 +196,20 @@ public class LoadingDraweeview extends FrameLayout {
         mScaleImageView.setMinimumScaleType(SubsamplingScaleImageView.SCALE_TYPE_CENTER_CROP);
     }
 
-
     private boolean isLongImage(int width, int height) {
-        if ((width > AppConfig.PhoneInfo.screenWidth || height > AppConfig.PhoneInfo.screenheight)) {
+        Log.i("lbxx", "b=" + width + "==" + height + "===" + screenWidth + "====" + screenheight);
+        if ((width > screenWidth || height > screenheight)) {
             if ((width / (float) height) > 2 || (height / (float) width) > 2) {
                 return true;
             }
         }
         return false;
     }
+
+    private void getDisplayMetrics() {
+        DisplayMetrics metric = mContext.getResources().getDisplayMetrics();
+        screenWidth = metric.widthPixels < metric.heightPixels ? metric.widthPixels : metric.heightPixels;  // 屏幕宽度（像素）
+        screenheight = metric.heightPixels > metric.widthPixels ? metric.heightPixels : metric.widthPixels;  // 屏幕高度（像素）
+    }
+
 }

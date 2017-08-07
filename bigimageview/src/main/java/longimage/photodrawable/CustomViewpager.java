@@ -2358,4 +2358,16 @@ public class CustomViewpager extends ViewGroup {
         ItemInfo() {
         }
     }
+
+    private CustomViewpager.OnTouchSlopListener mOnTouchSlopListener;
+
+    public void setOnTouchSlopListener(OnTouchSlopListener onTouchSlopListener) {
+        mOnTouchSlopListener = onTouchSlopListener;
+    }
+
+    public interface OnTouchSlopListener {
+        void onTouch(float diff);
+
+        void onSlopExit();
+    }
 }

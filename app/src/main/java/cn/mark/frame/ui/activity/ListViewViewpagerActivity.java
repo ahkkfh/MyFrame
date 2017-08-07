@@ -32,7 +32,7 @@ public class ListViewViewpagerActivity extends BaseActivity implements ViewPager
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("viewpager");
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_viewpager);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_listview_vp);
         initView();
     }
 

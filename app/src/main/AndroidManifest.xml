@@ -109,6 +109,9 @@
             android:name=".ui.activity.ListViewViewpagerActivity"
             android:theme="@style/NoActionBar"/>
         <activity
+            android:name=".ui.activity.ViewPagerActivity"
+            android:theme="@style/NoActionBar"/>
+        <activity
             android:name=".ui.activity.RecyclerViewNormalActivity"
             android:theme="@style/NoActionBar"/>
         <activity

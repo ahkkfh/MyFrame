@@ -7,8 +7,6 @@ import com.facebook.stetho.Stetho;
 import com.liulishuo.filedownloader.FileDownloader;
 
 import cn.mark.network.ApplicationHelper;
-import longimage.bigImageView.BigImageViewer;
-import longimage.fresco.FrescoImageLoader;
 
 /**
  * Created by yaoping on 2016/5/26.
@@ -26,12 +24,8 @@ public class FrameApplication extends Application {
         Stetho.initializeWithDefaults(this);
         Fresco.initialize(this);
         FileDownloader.init(getApplicationContext());
-        initBigImageView();//初始化BigImageView
     }
 
-    private void initBigImageView() {
-        BigImageViewer.initialize(FrescoImageLoader.with(this));
-    }
 
     public static ApplicationHelper getApplicationHelper() {
         return applicationHelper;
