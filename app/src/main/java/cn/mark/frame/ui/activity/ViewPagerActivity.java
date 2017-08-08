@@ -115,6 +115,7 @@ public class ViewPagerActivity extends BaseActivity {
 //        mBinding.vpListView.setOnTouchSlopListener(new CustomViewpager.OnTouchSlopListener() {
 //            @Override
 //            public void onTouch(float diff) {
+//                mBinding.vpCount.setAlpha(1 - diff / (AppConfig.PhoneInfo.screenheight * 0.13f));
 //                mBinding.getRoot().getBackground().mutate().setAlpha((int) (255 * (1 - diff / (AppConfig.PhoneInfo.screenheight * 0.5f))));//设置整个布局
 //            }
 //
