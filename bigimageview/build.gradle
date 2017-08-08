@@ -24,6 +24,8 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile supportDependencies.appCompat
+    compile supportDependencies.support_v4
+    compile supportDependencies.recyclerView
     compile supportDependencies.progresspieview// progresspie
     compile 'com.github.filippudak.progresspieview:library:1.0.4'
     compile supportDependencies.glide// glide
