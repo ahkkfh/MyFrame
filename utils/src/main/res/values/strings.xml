@@ -4,4 +4,6 @@
 
     <string name="encode_qrcode">生成二维码</string>
     <string name="dencode_qrcode">扫描二维码</string>
+    <string name="search_hint">Search</string>
+
 </resources>

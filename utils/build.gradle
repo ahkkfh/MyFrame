@@ -26,7 +26,6 @@ dependencies {
     androidTestCompile supportDependencies.testEspresso
     androidTestCompile supportDependencies.testRunner
     androidTestCompile supportDependencies.testAnnotations
-    compile supportDependencies.appCompat//compile 'com.android.support:appcompat-v7:23.4.0'
     compile supportDependencies.logger//logger为log日志格式化依赖库
     compile supportDependencies.appCompat
     compile supportDependencies.materialDesign

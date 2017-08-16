@@ -16,6 +16,7 @@ import cn.mark.frame.R;
 import cn.mark.frame.base.BaseFragment;
 import cn.mark.frame.databinding.FragmentCenterBinding;
 import cn.mark.frame.ui.activity.ChartActivity;
+import cn.mark.frame.ui.activity.MaterialSearchViewActivity;
 import cn.mark.frame.ui.activity.StatusBarActivty;
 import cn.mark.frame.ui.activity.TopTabActivity;
 import cn.mark.frame.ui.activity.ViewPagerActivity;
@@ -63,6 +64,12 @@ public class CenterFragment extends BaseFragment {
             @Override
             public void call(Void aVoid) {
                 startActivity(new Intent(getActivity(), ViewPagerActivity.class));
+            }
+        });
+        RxView.clicks(mBinding.showMaterialSearchView).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                startActivity(new Intent(getActivity(), MaterialSearchViewActivity.class));
             }
         });
     }

@@ -10,33 +10,40 @@
                   android:orientation="vertical">
 
         <Button
-            android:id="@+id/status_bar_layout"
+            android:id="@+id/button_default"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="status_bar"/>
+            android:text="button_default"/>
 
         <Button
-            android:id="@+id/chart_button"
+            android:id="@+id/button_themed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="chart_bar"/>
+            android:text="button_themed"/>
 
         <Button
-            android:id="@+id/top_tab"
+            android:id="@+id/button_voice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="tab_Order"/>
+            android:text="button_voice"/>
 
         <Button
-            android:id="@+id/big_image_view"
+            android:id="@+id/button_sticky"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="显示大图"/>
+            android:text="button_sticky"/>
 
         <Button
-            android:id="@+id/show_material_search_view"
+            android:id="@+id/button_tab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="show material search view"/>
+            android:text="button_tab"/>
+
+        <Button
+            android:id="@+id/button_input_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="button_input_type"/>
+
     </LinearLayout>
 </layout>
