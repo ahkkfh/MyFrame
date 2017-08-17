@@ -1,7 +1,6 @@
 //用于管理公共依赖库
 ext {
     retrofitVersion = '2.0.2'//网络请求的框架
-    leakCanaryVersion = '1.4-beta1'//内存溢出检测
     supportLibraryVersion = '23.2.1'//支持库
     recycleViewVersion = '23.1.1'//recyclerview的
     greendaoVersion = '2.2.0'
@@ -62,6 +61,7 @@ ext {
             supportAnotations        : "com.android.support:support-annotations:25.3.0",
             scaleImageView           : "com.davemorrissey.labs:subsampling-scale-image-view:3.6.0",
             okhttp3_integration      : "com.github.bumptech.glide:okhttp3-integration:1.4.0@aar",
-            okhttp3                  : 'com.squareup.okhttp3:okhttp:3.6.0'
+            okhttp3                  : 'com.squareup.okhttp3:okhttp:3.6.0',
+            leakcanary               : "com.squareup.leakcanary:leakcanary-android:1.5",
     ]
 }
