@@ -167,6 +167,9 @@
         <activity
             android:name=".ui.activity.MaterialSearchViewVoiceActivity"
             android:theme="@style/NoActionBar"/>
+        <activity
+            android:name=".ui.activity.DemoWebViewActivity"
+            android:theme="@style/NoActionBar"/>
 
         <meta-data
             android:name="design_width"

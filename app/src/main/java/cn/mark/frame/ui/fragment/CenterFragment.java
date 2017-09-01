@@ -16,6 +16,7 @@ import cn.mark.frame.R;
 import cn.mark.frame.base.BaseFragment;
 import cn.mark.frame.databinding.FragmentCenterBinding;
 import cn.mark.frame.ui.activity.ChartActivity;
+import cn.mark.frame.ui.activity.DemoWebViewActivity;
 import cn.mark.frame.ui.activity.MaterialSearchViewActivity;
 import cn.mark.frame.ui.activity.StatusBarActivty;
 import cn.mark.frame.ui.activity.TopTabActivity;
@@ -25,7 +26,7 @@ import rx.functions.Action1;
 
 /***
  * @author marks.luo
- * @Description: TODO()
+ * @Description: ()
  * @date:2017-04-12 15:15
  */
 public class CenterFragment extends BaseFragment {
@@ -70,6 +71,12 @@ public class CenterFragment extends BaseFragment {
             @Override
             public void call(Void aVoid) {
                 startActivity(new Intent(getActivity(), MaterialSearchViewActivity.class));
+            }
+        });
+        RxView.clicks(mBinding.webview).throttleFirst(Constant.defaultClickTime, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                startActivity(new Intent(getActivity(), DemoWebViewActivity.class));
             }
         });
     }
